@@ -24,25 +24,25 @@ ga('send', 'pageview');
     
     
     
-    <title>Hexo中图片插入问题 | Meow</title>
+    <title>Cocos2d-x v3.16踩过的坑 | Meow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Hexo,Markdown">
-    <meta name="description" content="前言在用Hexo搭建博客时有时需要插入图片，但是原生Hexo对图片管理的支持不是很好。此篇博客记录利用插件和Hexo的配置解决这个问题。 _config.yml配置更改在Hexo根目录下，_config.yml文件管理整个Hexo的配置设置。其中要开启post_asset_folder，即：1post_asset_folder: true 更改完成后，每新生成一片文章，就会在同级目录下生成一个名字">
-<meta name="keywords" content="Hexo,Markdown">
+    <meta name="keywords" content="Cocos2d-x,Android Studio">
+    <meta name="description" content="前言最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。 屏幕显示偏移在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：123auto size = Director::getInstance()-&amp;gt;ge">
+<meta name="keywords" content="Cocos2d-x,Android Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo中图片插入问题">
-<meta property="og:url" content="https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/index.html">
+<meta property="og:title" content="Cocos2d-x v3.16踩过的坑">
+<meta property="og:url" content="https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/index.html">
 <meta property="og:site_name" content="Meow">
-<meta property="og:description" content="前言在用Hexo搭建博客时有时需要插入图片，但是原生Hexo对图片管理的支持不是很好。此篇博客记录利用插件和Hexo的配置解决这个问题。 _config.yml配置更改在Hexo根目录下，_config.yml文件管理整个Hexo的配置设置。其中要开启post_asset_folder，即：1post_asset_folder: true 更改完成后，每新生成一片文章，就会在同级目录下生成一个名字">
+<meta property="og:description" content="前言最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。 屏幕显示偏移在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：123auto size = Director::getInstance()-&amp;gt;ge">
 <meta property="og:locale" content="en-US">
-<meta property="og:updated_time" content="2018-01-26T05:03:49.617Z">
+<meta property="og:updated_time" content="2018-01-26T09:05:27.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo中图片插入问题">
-<meta name="twitter:description" content="前言在用Hexo搭建博客时有时需要插入图片，但是原生Hexo对图片管理的支持不是很好。此篇博客记录利用插件和Hexo的配置解决这个问题。 _config.yml配置更改在Hexo根目录下，_config.yml文件管理整个Hexo的配置设置。其中要开启post_asset_folder，即：1post_asset_folder: true 更改完成后，每新生成一片文章，就会在同级目录下生成一个名字">
+<meta name="twitter:title" content="Cocos2d-x v3.16踩过的坑">
+<meta name="twitter:description" content="前言最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。 屏幕显示偏移在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：123auto size = Director::getInstance()-&amp;gt;ge">
     
         <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
     
@@ -123,7 +123,7 @@ ga('send', 'pageview');
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Hexo中图片插入问题</div>
+        <div class="flex-col header-title ellipsis">Cocos2d-x v3.16踩过的坑</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -145,15 +145,15 @@ ga('send', 'pageview');
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Hexo中图片插入问题</h1>
+        <h1 class="title">Cocos2d-x v3.16踩过的坑</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-01-26T01:59:05.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2018-01-26T08:35:23.000Z" itemprop="datePublished" class="page-time">
   2018-01-26
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Config/">Config</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Cocos2d-x/">Cocos2d-x</a></li></ul>
 
             
         </h5>
@@ -170,21 +170,21 @@ ga('send', 'pageview');
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#config-yml配置更改"><span class="post-toc-number">2.</span> <span class="post-toc-text">_config.yml配置更改</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装插件"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装插件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用教程"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用教程</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#屏幕显示偏移"><span class="post-toc-number">2.</span> <span class="post-toc-text">屏幕显示偏移</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Android-Studio添加新类"><span class="post-toc-number">3.</span> <span class="post-toc-text">Android Studio添加新类</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Hexo-Picture-Insert"
+<article id="post-Cocos2d-x-3-16-Problems"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Hexo中图片插入问题</h1>
+        <h1 class="post-card-title">Cocos2d-x v3.16踩过的坑</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-01-26 09:59:05" datetime="2018-01-26T01:59:05.000Z"  itemprop="datePublished">2018-01-26</time>
+            <time class="post-time" title="2018-01-26 16:35:23" datetime="2018-01-26T08:35:23.000Z"  itemprop="datePublished">2018-01-26</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Config/">Config</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Cocos2d-x/">Cocos2d-x</a></li></ul>
 
 
 
@@ -196,14 +196,15 @@ ga('send', 'pageview');
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在用Hexo搭建博客时有时需要插入图片，但是原生Hexo对图片管理的支持不是很好。此篇博客记录利用插件和Hexo的配置解决这个问题。</p>
-<h1 id="config-yml配置更改"><a href="#config-yml配置更改" class="headerlink" title="_config.yml配置更改"></a>_config.yml配置更改</h1><p>在Hexo根目录下，<code>_config.yml</code>文件管理整个Hexo的配置设置。其中要开启<code>post_asset_folder</code>，即：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
-<p>更改完成后，每新生成一片文章，就会在同级目录下生成一个名字相同的相对应的文件夹。图片存在该文件夹下即可。</p>
-<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>由于原生Hexo资源文件夹在生成真正博客时地址转换有问题，需要安装插件进行修正。执行如下命令安装插件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
-<p>当安装完成后就可以在写Markdown时很容易的使用资源文件夹下的图片了。</p>
-<h1 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h1><p>在插入图片时只要使用如下Markdown语法即可<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](文章名字/图片名字.后缀)</span><br></pre></td></tr></table></figure></p>
-<p>不知道我是不是因为在<code>_config.yml</code>中开启了<code>relative_link</code>，我采用如下方式插入图片：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](图片名字.后缀)</span><br></pre></td></tr></table></figure></p>
-<p>这点以后再探究好了喵～</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。</p>
+<h1 id="屏幕显示偏移"><a href="#屏幕显示偏移" class="headerlink" title="屏幕显示偏移"></a>屏幕显示偏移</h1><p>在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( size.width / <span class="number">2</span>, size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p>
+<p>目前不知道时从哪个版本开始的，直接使用上述代码会导致<code>sprite</code>下偏移(沿y轴)一定量但无左右偏移(沿x轴)。查找资料未果后看Helloworld样例，发现其用到了Director类中另一个变量纠正这个问题：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br></pre></td></tr></table></figure></p>
+<p>这里<code>origin</code>是真正的屏幕左下角的位置，所有屏幕上的显示的图像都要依据这个坐标进行调整。也就是说上述代码要改成：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( origin.x + size.width / <span class="number">2</span>, origin.y + size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p>
+<p>这时，屏幕偏移问题解决了，<code>sprite</code>也在屏幕的真正的正中央。</p>
+<h1 id="Android-Studio添加新类"><a href="#Android-Studio添加新类" class="headerlink" title="Android Studio添加新类"></a>Android Studio添加新类</h1><p>在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的<code>.h</code>和<code>.cpp</code>以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的<code>.cpp</code>问家加入编译配置文件中。</p>
+<p>后来发现在左侧<code>External Build Files</code>中，有个叫做<code>Android.mk</code>的文件，需要在其中的<code>LOCAL_SRC_FILES</code>变量中加入新的<code>.cpp</code>文件。即：<br><figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := <span class="variable">$(LOCAL_PATH)</span>/hellocpp/main.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/AppDelegate.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/HelloWorldScene.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/Hello.cpp</span><br></pre></td></tr></table></figure></p>
+<p>想必大家都读得懂怎么向这个变量中加入新的文件，其中<code>Hello.cpp</code>就是我添加的新<code>.cpp</code>文件。</p>
+<p>To be continue…</p>
 
         </div>
 
@@ -212,7 +213,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-01-26T05:03:49.617Z" itemprop="dateUpdated">2018-01-26 13:03:49</time>
+    Last updated: <time datetime="2018-01-26T09:05:27.656Z" itemprop="dateUpdated">2018-01-26 17:05:27</time>
 </span><br>
 
 
@@ -232,7 +233,7 @@ ga('send', 'pageview');
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Markdown/">Markdown</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Android-Studio/">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Cocos2d-x/">Cocos2d-x</a></li></ul>
 
 
             
@@ -242,7 +243,7 @@ ga('send', 'pageview');
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/&title=《Hexo中图片插入问题》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -252,22 +253,22 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/&title=《Hexo中图片插入问题》 — Meow&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo中图片插入问题》 — Meow&url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/&via=https://lrscy.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x v3.16踩过的坑》 — Meow&url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&via=https://lrscy.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -287,21 +288,14 @@ ga('send', 'pageview');
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="../Hexo-Github-Backup/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">在Github上备份Hexo博客</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="../Markdown-MathJax-Usage/" id="post-next" class="post-nav-link">
+      <a href="../Hexo-Github-Backup/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Markdown中MathJax的用法</h4>
+        <h4 class="title">在Github上备份Hexo博客</h4>
       </a>
     </div>
   
@@ -376,7 +370,7 @@ ga('send', 'pageview');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/&title=《Hexo中图片插入问题》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -386,22 +380,22 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/&title=《Hexo中图片插入问题》 — Meow&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo中图片插入问题》 — Meow&url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/&via=https://lrscy.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x v3.16踩过的坑》 — Meow&url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&via=https://lrscy.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -412,7 +406,7 @@ ga('send', 'pageview');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2018/01/26/Hexo-Picture-Insert/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" alt="微信分享二维码">
 </div>
 
 

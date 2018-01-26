@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    
+    
+    
+    <title>在Github上备份Hexo博客 | Meow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo,Github">
+    <meta name="description" content="前言由于之前忘记备份Hexo博客的markdown文件，在重做系统时候还忘记备份博客了，导致现在不得不重新从网页上扒下来之前的文章重新写一遍，十分耗费精力。因此在网上找了下如何备份Hexo博客，在此记录下。 目前假设Git和Github环境已经配置好了，如果没有配置好详见「Ubuntu16.04下Github配置」。 备份博客目前假设本地Hexo博客已经初始化，如果没有配置好Hexo博客详见「Ub">
+<meta name="keywords" content="Hexo,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Github上备份Hexo博客">
+<meta property="og:url" content="https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/index.html">
+<meta property="og:site_name" content="Meow">
+<meta property="og:description" content="前言由于之前忘记备份Hexo博客的markdown文件，在重做系统时候还忘记备份博客了，导致现在不得不重新从网页上扒下来之前的文章重新写一遍，十分耗费精力。因此在网上找了下如何备份Hexo博客，在此记录下。 目前假设Git和Github环境已经配置好了，如果没有配置好详见「Ubuntu16.04下Github配置」。 备份博客目前假设本地Hexo博客已经初始化，如果没有配置好Hexo博客详见「Ub">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2018-01-26T05:47:13.362Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Github上备份Hexo博客">
+<meta name="twitter:description" content="前言由于之前忘记备份Hexo博客的markdown文件，在重做系统时候还忘记备份博客了，导致现在不得不重新从网页上扒下来之前的文章重新写一遍，十分耗费精力。因此在网上找了下如何备份Hexo博客，在此记录下。 目前假设Git和Github环境已经配置好了，如果没有配置好详见「Ubuntu16.04下Github配置」。 备份博客目前假设本地Hexo博客已经初始化，如果没有配置好Hexo博客详见「Ub">
+    
+        <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Meow</h5>
+          <a href="mailto:ruosenlee@gmail.com" title="ruosenlee@gmail.com" class="mail">ruosenlee@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                Homepage
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lrscy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在Github上备份Hexo博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在Github上备份Hexo博客</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-26T04:57:56.000Z" itemprop="datePublished" class="page-time">
+  2018-01-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Config/">Config</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#备份博客"><span class="post-toc-number">2.</span> <span class="post-toc-text">备份博客</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建新分支"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建新分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建立-gitignore"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">建立.gitignore</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在Github上备份"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">在Github上备份</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置默认分支"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">设置默认分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#个人备份习惯"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">个人备份习惯</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#恢复博客"><span class="post-toc-number">3.</span> <span class="post-toc-text">恢复博客</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#克隆项目到本地"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">克隆项目到本地</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#恢复博客-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">恢复博客</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Hexo-Github-Backup"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在Github上备份Hexo博客</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-26 12:57:56" datetime="2018-01-26T04:57:56.000Z"  itemprop="datePublished">2018-01-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Config/">Config</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于之前忘记备份Hexo博客的markdown文件，在重做系统时候还忘记备份博客了，导致现在不得不重新从网页上扒下来之前的文章重新写一遍，十分耗费精力。因此在网上找了下如何备份Hexo博客，在此记录下。</p>
+<p>目前假设Git和Github环境已经配置好了，如果没有配置好详见「<a href="/2017/05/01/Ubuntu-Github-config">Ubuntu16.04下Github配置</a>」。</p>
+<h1 id="备份博客"><a href="#备份博客" class="headerlink" title="备份博客"></a>备份博客</h1><p>目前假设本地Hexo博客已经初始化，如果没有配置好Hexo博客详见「<a href="/2017/11/10/Ubuntu-Github-io-config-Hexo">Ubuntu16.04下从零起步搭建配置github.io博客————Hexo</a>」。</p>
+<p>Git相关操作请参考<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的Git教程</a></p>
+<h2 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h2><p>在Github.io上建立博客时已经开了一个新仓库了，如果再开另一个仓库存放源代码有点浪费，因此采用建立新分支的方法备份博客。</p>
+<p>虽然理论上什么时候创建新分支来备份都可以，但是还是建议在建立博客的时候就创建备份分支。（然而我中途才想起来-.-）</p>
+<p>本地Git建立新分支命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b BRANCHNAME</span><br></pre></td></tr></table></figure></p>
+<p><code>BRANCHNAME</code>是自定义的新分支的名字，建议起为<code>hexo</code>。</p>
+<h2 id="建立-gitignore"><a href="#建立-gitignore" class="headerlink" title="建立.gitignore"></a>建立.gitignore</h2><p>建立.gitignore文件将不需要备份的文件屏蔽。个人的.gitignore文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure></p>
+<h2 id="在Github上备份"><a href="#在Github上备份" class="headerlink" title="在Github上备份"></a>在Github上备份</h2><p>通过如下命令将本地文件备份到Github上。</p>
+<p>假设目前在hexo博客的根目录下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"Backup"</span></span><br><span class="line">$ git push origin hexo</span><br></pre></td></tr></table></figure></p>
+<p>这样就备份完博客了且在Github上能看到两个分支(<code>master</code>和<code>hexo</code>)。</p>
+<h2 id="设置默认分支"><a href="#设置默认分支" class="headerlink" title="设置默认分支"></a>设置默认分支</h2><p>在Github上你的github.io仓库中设置默认分支为<code>hexo</code>。这样有助于之后恢复博客。<code>master</code>分支时默认的博客静态页面分支，在之后恢复博客的时候并不需要。</p>
+<h2 id="个人备份习惯"><a href="#个人备份习惯" class="headerlink" title="个人备份习惯"></a>个人备份习惯</h2><p>个人而言习惯于先备份文件再生成博客。即先执行<code>git add .</code>,<code>git commit -m &quot;Backup&quot;</code>,<code>git push origin hexo</code>将博客备份完成，然后执行<code>hexo g -d</code>发布博客。</p>
+<h1 id="恢复博客"><a href="#恢复博客" class="headerlink" title="恢复博客"></a>恢复博客</h1><p>目前假设本地Hexo博客基础环境已经搭好，如果没有配置好Hexo博客基础环境详见「<a href="/2017/11/10/Ubuntu-Github-io-config-Hexo#基础环境搭建">Ubuntu16.04下从零起步搭建配置github.io博客————Hexo</a>」。</p>
+<h2 id="克隆项目到本地"><a href="#克隆项目到本地" class="headerlink" title="克隆项目到本地"></a>克隆项目到本地</h2><p>输入下列命令克隆博客必须文件(<code>hexo</code>分支)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/yourgithubname/yourgithubname.github.io</span><br></pre></td></tr></table></figure></p>
+<h2 id="恢复博客-1"><a href="#恢复博客-1" class="headerlink" title="恢复博客"></a>恢复博客</h2><p>在克隆的那个文件夹下输入如下命令恢复博客：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<p>在此不需要执行<code>hexo init</code>这条指令，因为不是从零搭建起新博客。</p>
+<p>完成喵～</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-01-26T05:47:13.362Z" itemprop="dateUpdated">2018-01-26 13:47:13</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://lrscy.github.io">
+            <img src="../../../../img/avatar.jpg" alt="Meow">
+            Meow
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/&title=《在Github上备份Hexo博客》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/&title=《在Github上备份Hexo博客》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Github上备份Hexo博客》 — Meow&url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../Hexo-Picture-Insert/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hexo中图片插入问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Total Visits -<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        Total Visitors -<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Meow &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/&title=《在Github上备份Hexo博客》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/&title=《在Github上备份Hexo博客》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Github上备份Hexo博客》 — Meow&url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2018/01/26/Hexo-Github-Backup/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+    
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Where are you!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)Hi! Welcome Back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lrscy.github.io/"/>
-  <updated>2018-01-26T09:05:27.656Z</updated>
+  <updated>2018-02-01T04:43:17.920Z</updated>
   <id>https://lrscy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu系统CUDA Tookit 8安装</title>
+    <link href="https://lrscy.github.io/2018/02/01/Ubuntu-CUDA-Tookit-8-Install/"/>
+    <id>https://lrscy.github.io/2018/02/01/Ubuntu-CUDA-Tookit-8-Install/</id>
+    <published>2018-02-01T03:39:17.000Z</published>
+    <updated>2018-02-01T04:43:17.920Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前一阵重做系统把之前的安装教程的博客给弄丢了，现在重写一份做记录好了。目前老环境还是要<code>CUDA Tookit 8</code>（以下简称<code>CUDA8</code>），因此目前先不安装CUDA最新的<code>CUDA9</code>了。</p><p>本教程是在Ubuntu 16.04.3 LTS上进行的，其他版本的Ubuntu系统请自行实验，目前在Ubuntu 17.10系统上实验成功。</p><p>当前假设Ubuntu系统已经安装完成，目前直接进行CUDA8的安装。</p><h1 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h1><h2 id="基础环境安装"><a href="#基础环境安装" class="headerlink" title="基础环境安装"></a>基础环境安装</h2><p>安装CUDA8需要基础的编译环境，需要检测下系统上是否安装了<code>gcc</code>或<code>g++</code>。命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -v</span><br><span class="line">$ g++ -v</span><br></pre></td></tr></table></figure></p><p>如果任意一个出现版本信息就代表安装过了。如果都没有出现版本信息，则请采用如下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install build-essential</span><br></pre></td></tr></table></figure></p><p>安装完成即可，网上有说CUDA8不支持<code>g++ 5.0</code>以上的版本，目前本人没有遇上这个问题。</p><h2 id="附加环境安装"><a href="#附加环境安装" class="headerlink" title="附加环境安装"></a>附加环境安装</h2><p>有些人在上述基础环境下安装完CUDA8后会出现<code>Missing recommended library: libGLU.so</code>的提示。如果不确定当前环境想提前避免这个问题，请安装如下包：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev</span><br></pre></td></tr></table></figure></p><p>至此，基础环境都安装完了。</p><h1 id="NVIDIA驱动安装"><a href="#NVIDIA驱动安装" class="headerlink" title="NVIDIA驱动安装"></a>NVIDIA驱动安装</h1><p>个人强烈建议先装NVIDIA驱动，因为CUDA8自带的驱动实在是容易出问题。驱动安装详见「<a href="/2017/10/10/Ubuntu-NVIDIA-Driver-Install">Ubuntu系统NVIDIA显卡驱动安装</a>」。</p><h1 id="CUDA8安装配置"><a href="#CUDA8安装配置" class="headerlink" title="CUDA8安装配置"></a>CUDA8安装配置</h1><h2 id="CUDA8下载"><a href="#CUDA8下载" class="headerlink" title="CUDA8下载"></a>CUDA8下载</h2><p>先从<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">官网下载</a>CUDA的驱动。目前CUDA的最新版本是<code>CUDA9</code>，要下老版本的话请采用如下<a href="https://developer.nvidia.com/cuda-80-ga2-download-archive" target="_blank" rel="noopener">官方网址</a>，下载<code>Base Installer</code>和<code>Patch 2</code>。</p><p>个人建议先将文件都下载到家目录(<code>~</code>)底下，因为如果系统是中文环境的话，后续安装可能会出现文件夹名乱码的情况。安装完成后可以移动到自己想移动的位置。</p><h2 id="CUDA8安装"><a href="#CUDA8安装" class="headerlink" title="CUDA8安装"></a>CUDA8安装</h2><p>是否进入<code>tty1</code>环境看个人，本人之前各种重装驱动给吓怕了，不确定图形界面是否影响到了，因此直接进入了<code>tty1</code>环境进行CUDA8的安装。关闭图形界面的步骤如下：</p><ol><li>首先按住<code>Ctrl+Alt+F1</code>进入<code>tty1</code></li><li>输入用户名和密码</li><li>执行<code>sudo service lightdm stop</code>命令关闭图形界面。</li></ol><p>然后在安装文件所在目录下执行如下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod 755 (CUDA Install File)</span><br><span class="line">$ sudo ./(CUDA Install File)</span><br></pre></td></tr></table></figure></p><p>其中<code>CUDA Install File</code>是个人CUDA安装文件的名字（包括文件后缀）。</p><p>安装关键过程如下（先后顺序记不清了）：</p><ol><li>安装过程中先阅读完一大串协议，按住<code>d</code>往下（这样跳得很快），直到最后。然后输入accept。</li><li>会询问是否安装<code>NVIDIA DRIVER</code>，输入<code>n</code>。</li><li>询问是否安装<code>OPENGL</code>时输入<code>n</code>。（记得有这个问题的，这里是个大坑！！）</li><li>其他默认选择<code>y</code>或者<code>空着</code>（就是直接按回车）就行。</li></ol><p>到最后可能会出现<code>INCOMPLETE INSTALL</code>，这里不用管。这是因为你没装它的驱动而已。如果出现<code>Missing recommended library: libGLU.so</code>的提示，请参考<a href="#附加环境安装">附加环境安装</a></p><p>等一切都安装好后重启即可。</p><h2 id="补丁安装"><a href="#补丁安装" class="headerlink" title="补丁安装"></a>补丁安装</h2><p>是否进入<code>tty1</code>环境依旧看个人，具体参考上一节开头。</p><p>安装时执行如下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod 755 (CUDA Patch File)</span><br><span class="line">$ sudo ./(CUDA Patch File)</span><br></pre></td></tr></table></figure></p><p>其中<code>CUDA Patch File</code>是之前下载的CUDA8的补丁文件<code>Patch 2</code>。安装过程和前一节类似，基本上直接一路默认就行。</p><p>等一切安装完了后重启即可。</p><h2 id="环境设置"><a href="#环境设置" class="headerlink" title="环境设置"></a>环境设置</h2><p>个人习惯在<code>/etc/profile.d</code>下设置环境变量。先进入该文件夹，然后执行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo touch cuda.sh</span><br><span class="line">$ sudo vim cuda.sh</span><br></pre></td></tr></table></figure></p><p>这里<code>vim</code>可以换成<code>gedit</code>或者其他熟悉的编辑器。如果不熟悉<code>vim</code>的同学无意间进去了，输入<code>:q</code>退出<code>vim</code>。</p><p>在编辑器中输入如下文字：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export CUDA_HOME=/usr/local/cuda-8.0</span><br><span class="line">export PATH=$PATH:/usr/local/cuda-8.0/bin</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64</span><br></pre></td></tr></table></figure></p><p>然后保存重启即可。</p><h2 id="cuDNN安装"><a href="#cuDNN安装" class="headerlink" title="cuDNN安装"></a>cuDNN安装</h2><p><code>cuDNN</code>是个GPU加速库，能为深度学习网络的计算加速。在<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">官网</a>下载。下载前可能需要先注册<code>NVIDIA DEVELOPER</code>。注册过程很简单，注册完成后选择支持<code>CUDA8.0</code>的<code>cuDNN</code>下载即可。</p><p>在下载目录解压后进入<code>cuda</code>文件夹，这里会见到<code>include</code>和<code>lib64</code>两个文件夹。这里建议在命令行下执行，因为会用到<code>sudo</code>进行暂时的root权限申请。输入如下命令进行安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cp include/cudnn.h /usr/<span class="built_in">local</span>/cuda/include</span><br><span class="line">$ sudo cp lib64/libcudnn* /usr/<span class="built_in">local</span>/cuda/lib64</span><br></pre></td></tr></table></figure></p><p>然后进入<code>/usr/local/cuda/lib64</code>文件夹中，执行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rm libcudnn.so libcudnn.so.6</span><br><span class="line">$ sudo ln -s libcudnn.so.6.0.20 libcudnn.so.6</span><br><span class="line">$ sudo ln -s libcudnn.so.6 libcudnn.so</span><br><span class="line">$ sudo ldconfig</span><br></pre></td></tr></table></figure></p><p>这里<code>.6</code>和<code>.6.0.20</code>是下载的cuDNN的版本号，请依据个人下载的实际版本进行修改。</p><p>至此，cuDNN已经安装完成。</p><h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>至此，整个CUDA Tookit 8的所有安装过程就完成了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;前一阵重做系统把之前的安装教程的博客给弄丢了，现在重写一份做记录好了。目前老环境还是要&lt;code&gt;CUDA Tookit 8&lt;/code&gt;（
+      
+    
+    </summary>
+    
+      <category term="Config" scheme="https://lrscy.github.io/categories/Config/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://lrscy.github.io/tags/Ubuntu/"/>
+    
+      <category term="CUDA" scheme="https://lrscy.github.io/tags/CUDA/"/>
+    
+  </entry>
   
   <entry>
     <title>Cocos2d-x v3.16踩过的坑</title>

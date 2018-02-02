@@ -31,19 +31,19 @@ ga('send', 'pageview');
     
     
     <meta name="keywords" content="Ubuntu,NVIDIA">
-    <meta name="description" content="前言本文是在Ubuntu17.04系统上安装NVIDIA驱动。 在Ubuntu16.04 LTS上安装驱动时是从NVIDIA 官网上下载.run文件然后按照提示安装，但是在Ubuntu17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。 如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。 安装准备查找合适的驱动在NVIDIA 官网上寻找合适的驱动，并">
+    <meta name="description" content="前言本文是在Ubuntu 17.04系统上安装NVIDIA驱动。 在Ubuntu 16.04 LTS上安装驱动时是从NVIDIA 官网上下载.run文件然后按照提示安装，但是在Ubuntu 17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。 如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。 安装准备查找合适的驱动在NVIDIA 官网上寻找合适的驱">
 <meta name="keywords" content="Ubuntu,NVIDIA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu系统NVIDIA显卡驱动安装">
 <meta property="og:url" content="https://lrscy.github.io/2017/10/10/Ubuntu-NVIDIA-Driver-Install/index.html">
 <meta property="og:site_name" content="Meow">
-<meta property="og:description" content="前言本文是在Ubuntu17.04系统上安装NVIDIA驱动。 在Ubuntu16.04 LTS上安装驱动时是从NVIDIA 官网上下载.run文件然后按照提示安装，但是在Ubuntu17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。 如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。 安装准备查找合适的驱动在NVIDIA 官网上寻找合适的驱动，并">
+<meta property="og:description" content="前言本文是在Ubuntu 17.04系统上安装NVIDIA驱动。 在Ubuntu 16.04 LTS上安装驱动时是从NVIDIA 官网上下载.run文件然后按照提示安装，但是在Ubuntu 17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。 如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。 安装准备查找合适的驱动在NVIDIA 官网上寻找合适的驱">
 <meta property="og:locale" content="en-US">
 <meta property="og:image" content="https://lrscy.github.io/2017/10/10/Ubuntu-NVIDIA-Driver-Install/NVIDIA-X-Server-Settings.png">
-<meta property="og:updated_time" content="2018-01-25T15:41:26.276Z">
+<meta property="og:updated_time" content="2018-02-02T08:58:27.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu系统NVIDIA显卡驱动安装">
-<meta name="twitter:description" content="前言本文是在Ubuntu17.04系统上安装NVIDIA驱动。 在Ubuntu16.04 LTS上安装驱动时是从NVIDIA 官网上下载.run文件然后按照提示安装，但是在Ubuntu17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。 如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。 安装准备查找合适的驱动在NVIDIA 官网上寻找合适的驱动，并">
+<meta name="twitter:description" content="前言本文是在Ubuntu 17.04系统上安装NVIDIA驱动。 在Ubuntu 16.04 LTS上安装驱动时是从NVIDIA 官网上下载.run文件然后按照提示安装，但是在Ubuntu 17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。 如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。 安装准备查找合适的驱动在NVIDIA 官网上寻找合适的驱">
 <meta name="twitter:image" content="https://lrscy.github.io/2017/10/10/Ubuntu-NVIDIA-Driver-Install/NVIDIA-X-Server-Settings.png">
     
         <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
@@ -198,8 +198,8 @@ ga('send', 'pageview');
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文是在Ubuntu17.04系统上安装NVIDIA驱动。</p>
-<p>在Ubuntu16.04 LTS上安装驱动时是从<a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">NVIDIA 官网</a>上下载.run文件然后按照提示安装，但是在Ubuntu17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文是在Ubuntu 17.04系统上安装NVIDIA驱动。</p>
+<p>在Ubuntu 16.04 LTS上安装驱动时是从<a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">NVIDIA 官网</a>上下载.run文件然后按照提示安装，但是在Ubuntu 17.04上并不成功。因此寻找到了一种更为简便的方法，记录在此。</p>
 <p>如果要在本机安装NVIDIA Driver的话请先用手机等设备照下关键步骤然后再执行。</p>
 <h1 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h1><h2 id="查找合适的驱动"><a href="#查找合适的驱动" class="headerlink" title="查找合适的驱动"></a>查找合适的驱动</h2><p>在<a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">NVIDIA 官网</a>上寻找合适的驱动，并记住其版本号。例如，384.98的版本号是384。</p>
 <h2 id="关闭图形界面"><a href="#关闭图形界面" class="headerlink" title="关闭图形界面"></a>关闭图形界面</h2><p>首先按住<code>Ctrl+Alt+F1</code>进入<code>tty1</code>模式，然后输入如下代码关闭图形界面（X Server）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo stop lightdm</span><br></pre></td></tr></table></figure></p>
@@ -231,7 +231,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-01-25T15:41:26.276Z" itemprop="dateUpdated">2018-01-25 23:41:26</time>
+    Last updated: <time datetime="2018-02-02T08:58:27.624Z" itemprop="dateUpdated">2018-02-02 16:58:27</time>
 </span><br>
 
 
@@ -311,7 +311,7 @@ ga('send', 'pageview');
     <div class="waves-block waves-effect prev">
       <a href="../../../11/10/Ubuntu-Github-io-config-Hexo/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Ubuntu16.04下从零起步搭建配置github.io博客——Hexo</h4>
+        <h4 class="title">Ubuntu 16.04下从零起步搭建配置github.io博客——Hexo</h4>
       </a>
     </div>
   
@@ -320,7 +320,7 @@ ga('send', 'pageview');
     <div class="waves-block waves-effect next">
       <a href="../../../05/02/Ubuntu-SSH-config/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Ubuntu16.04下(多)SSH配置</h4>
+        <h4 class="title">Ubuntu 16.04下(多)SSH配置</h4>
       </a>
     </div>
   

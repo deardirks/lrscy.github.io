@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    
+    
+    
+    <title>Ubuntu 16.04下TensorFlow安装 | Meow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Ubuntu,Tensorflow">
+    <meta name="description" content="前言TensorFlow安装环境为Ubuntu 16.04.3 LTS，GPU为GT 750M。 假设目前已经安装好了CUDA8，如果没有安装请依照「Ubuntu 16.04下CUDA Tookit 8安装」进行安装。 如果有一定英语能力的同学最好请移步官网进行下载安装，尽管可能需要下科学上网。 基础环境搭建本文采用Virtualenv环境进行搭建，这样能将TensorFlow运行于一个分离开的P">
+<meta name="keywords" content="Ubuntu,Tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 16.04下TensorFlow安装">
+<meta property="og:url" content="https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/index.html">
+<meta property="og:site_name" content="Meow">
+<meta property="og:description" content="前言TensorFlow安装环境为Ubuntu 16.04.3 LTS，GPU为GT 750M。 假设目前已经安装好了CUDA8，如果没有安装请依照「Ubuntu 16.04下CUDA Tookit 8安装」进行安装。 如果有一定英语能力的同学最好请移步官网进行下载安装，尽管可能需要下科学上网。 基础环境搭建本文采用Virtualenv环境进行搭建，这样能将TensorFlow运行于一个分离开的P">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2018-02-02T10:46:53.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu 16.04下TensorFlow安装">
+<meta name="twitter:description" content="前言TensorFlow安装环境为Ubuntu 16.04.3 LTS，GPU为GT 750M。 假设目前已经安装好了CUDA8，如果没有安装请依照「Ubuntu 16.04下CUDA Tookit 8安装」进行安装。 如果有一定英语能力的同学最好请移步官网进行下载安装，尽管可能需要下科学上网。 基础环境搭建本文采用Virtualenv环境进行搭建，这样能将TensorFlow运行于一个分离开的P">
+    
+        <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Meow</h5>
+          <a href="mailto:ruosenlee@gmail.com" title="ruosenlee@gmail.com" class="mail">ruosenlee@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                Homepage
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lrscy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Ubuntu 16.04下TensorFlow安装</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Ubuntu 16.04下TensorFlow安装</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-02T05:29:40.000Z" itemprop="datePublished" class="page-time">
+  2018-02-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Config/">Config</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基础环境搭建"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CUPTI环境搭建"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">CUPTI环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pip环境搭建"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pip环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Virtualenv环境搭建"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Virtualenv环境搭建</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TensorFlow安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">TensorFlow安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进入Virtualenv环境"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">进入Virtualenv环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新pip"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">更新pip</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装TensorFlow"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">安装TensorFlow</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TensorFlow的使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">TensorFlow的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动TensorFlow环境"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">启动TensorFlow环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试TensorFlow环境"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">测试TensorFlow环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#退出TensorFlow环境"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">退出TensorFlow环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TensorFlow的卸载"><span class="post-toc-number">5.</span> <span class="post-toc-text">TensorFlow的卸载</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Ubuntu-Tensorflow-config"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Ubuntu 16.04下TensorFlow安装</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-02 13:29:40" datetime="2018-02-02T05:29:40.000Z"  itemprop="datePublished">2018-02-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Config/">Config</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>TensorFlow安装环境为<code>Ubuntu 16.04.3 LTS</code>，GPU为<code>GT 750M</code>。</p>
+<p>假设目前已经安装好了<code>CUDA8</code>，如果没有安装请依照「<a href="/2018/02/01/Ubuntu-CUDA-Tookit-8-Install">Ubuntu 16.04下CUDA Tookit 8安装</a>」进行安装。</p>
+<p>如果有一定英语能力的同学最好请移步<a href="https://www.tensorflow.org/install/install_linux" target="_blank" rel="noopener">官网</a>进行下载安装，尽管可能需要下科学上网。</p>
+<h1 id="基础环境搭建"><a href="#基础环境搭建" class="headerlink" title="基础环境搭建"></a>基础环境搭建</h1><p>本文采用Virtualenv环境进行搭建，这样能将TensorFlow运行于一个分离开的Python环境下，免得今后出错时对整个系统产生影响。</p>
+<h2 id="CUPTI环境搭建"><a href="#CUPTI环境搭建" class="headerlink" title="CUPTI环境搭建"></a>CUPTI环境搭建</h2><p>CUPTI库能够提高可以提高CUDA的性能，官方要求安装。</p>
+<p>如果CUDA Tookit &gt;= 8.0，输入如下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install cuda-command-line-tools</span><br></pre></td></tr></table></figure></p>
+<p>并且在CUDA安装时所设定的<code>LD_LIBRARY_PATH</code>添加路径至如下状态：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/usr/<span class="built_in">local</span>/cuda/extras/CUPTI/lib64</span><br></pre></td></tr></table></figure></p>
+<p>如果CUDA Tookit &lt;= 7.5或者上述命令无法执行，请输入如下命令安装CUPTI库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install libcupti-dev</span><br></pre></td></tr></table></figure></p>
+<h2 id="pip环境搭建"><a href="#pip环境搭建" class="headerlink" title="pip环境搭建"></a>pip环境搭建</h2><p>下面两行中选择一行执行即可，依据个人Python版本选择：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install python-pip  python-dev  python-virtualenv <span class="comment"># for Python 2.7</span></span><br><span class="line">$ sudo apt install python3-pip python3-dev python-virtualenv <span class="comment"># for Python 3.x</span></span><br></pre></td></tr></table></figure></p>
+<p>本人选择的是<code>Python2.7</code>，因为<code>Ubuntu 16.04.3</code>默认<code>Python</code>为<code>Python 2.7</code>，改默认会影响<code>ibus-pinyin</code>（输入法）的更新和运行。</p>
+<h2 id="Virtualenv环境搭建"><a href="#Virtualenv环境搭建" class="headerlink" title="Virtualenv环境搭建"></a>Virtualenv环境搭建</h2><p>下面两行中选择一行执行即可，依据个人Python版本选择：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv --system-site-packages targetDirectory            <span class="comment"># for Python 2.7</span></span><br><span class="line">$ virtualenv --system-site-packages -p python3 targetDirectory <span class="comment"># for Python 3.x</span></span><br></pre></td></tr></table></figure></p>
+<p>其中<code>targetDirectory</code>是隔离环境的根目录，需要自行设定。个人设定是<code>~/tensorflow</code>，下文暂且按照这个目录进行介绍。</p>
+<p>至此，基础观景搭建完成。</p>
+<h1 id="TensorFlow安装"><a href="#TensorFlow安装" class="headerlink" title="TensorFlow安装"></a>TensorFlow安装</h1><h2 id="进入Virtualenv环境"><a href="#进入Virtualenv环境" class="headerlink" title="进入Virtualenv环境"></a>进入Virtualenv环境</h2><p>输入如下命令进入Virtualenv环境：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/tensorflow/bin/activate      <span class="comment"># bash, sh, ksh, or zsh</span></span><br><span class="line">$ <span class="built_in">source</span> ~/tensorflow/bin/activate.csh  <span class="comment"># csh or tcsh</span></span><br></pre></td></tr></table></figure></p>
+<p>请依据自身<code>shell</code>环境选择，一般Ubuntu原生使用的是<code>sh</code>。</p>
+<p>这里可以在<code>~/.bashrc</code>中输入如下命令使得命令简化：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> tensorflow=<span class="string">"source ~/tensorflow/bin/activate"</span>      <span class="comment"># bash, sh, ksh, or zsh</span></span><br><span class="line"><span class="built_in">alias</span> tensorflow=<span class="string">"source ~/tensorflow/bin/activate.csh"</span>  <span class="comment"># csh or tcsh</span></span><br></pre></td></tr></table></figure></p>
+<p>请依据自身的<code>shell</code>环境选择第一条还是第二条。其中<code>tensorflow</code>可以自行拟定。</p>
+<p>当编辑完后在命令行中输入如下命令使其立即生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>以后在命令行中输入<code>tensorflow</code>即可调出该<code>Virtualenv</code>环境。</p>
+<p>当前环境应该如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) xxx@xxx:path$</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><code>tensorflow</code>即<code>Virtualenv</code>文件夹名称，下文按照<code>tensorflow</code>描述。</li>
+<li><code>xxx@xxx:path</code>与未进入<code>Virtualenv</code>环境时无差别。下文中将简化描述为<code>(tensorflow) $</code></li>
+</ol>
+<h2 id="更新pip"><a href="#更新pip" class="headerlink" title="更新pip"></a>更新pip</h2><p>为了确保pip version &gt;= 8.1，输入如下命令更新pip：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) $ pip install --upgrade pip  <span class="comment"># for Python 2.7</span></span><br><span class="line">(tensorflow) $ pip3 install --upgrade pip <span class="comment"># for Python 3.x</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="安装TensorFlow"><a href="#安装TensorFlow" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h2><p>如果系统中的<code>CUDA Tookit</code>和<code>cuDNN</code>都是最新版，请从以下四条命令中选择一个来安装TensorFlow：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) $ pip install --upgrade tensorflow      <span class="comment"># for Python 2.7</span></span><br><span class="line">(tensorflow) $ pip3 install --upgrade tensorflow     <span class="comment"># for Python 3.x</span></span><br><span class="line">(tensorflow) $ pip install --upgrade tensorflow-gpu  <span class="comment"># for Python 2.7 and GPU</span></span><br><span class="line">(tensorflow) $ pip3 install --upgrade tensorflow-gpu <span class="comment"># for Python 3.x and GPU</span></span><br></pre></td></tr></table></figure></p>
+<p>前两条是仅使用CPU的版本，后两条的版本能够使用GPU。</p>
+<p>如果系统中的<code>CUDA Tookit</code>和<code>cuDNN</code>并非最新版，按照上述安装很可能会出现问题导致重装。因此安装前请先完成如下几步：</p>
+<ol>
+<li>请先确定系统中的<code>cuDNN</code>和<code>CUDA Tookit</code>时想匹配的，具体版本匹配详见<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">官网</a>。</li>
+<li>请在<a href="https://github.com/tensorflow/tensorflow/releases" target="_blank" rel="noopener">TensorFlow的Github Release</a>中寻找符合自己<code>CUDA Tookit</code>和<code>cuDNN</code>的版本。</li>
+<li>依照选好的版本拼凑网址。</li>
+</ol>
+<p>拼凑网址如下，请依据CPU以及GPU从两条中选择一条：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># for CPU only</span><br><span class="line">https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-x.x.x-cpxx-none-linux_x86_64.whl</span><br><span class="line"># for GPU support</span><br><span class="line">https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-x.x.x-cpxx-none-linux_x86_64.whl</span><br></pre></td></tr></table></figure></p>
+<p>其中：</p>
+<ol>
+<li><code>x.x.x</code>是从<code>release</code>中选择出的需要的版本。</li>
+<li><code>cpxx</code>是本机<code>python</code>的版本，例如：<code>2.7.xx</code>为<code>27</code>，<code>3.5.xx</code>的版本为<code>35</code>，以此类推。</li>
+<li><code>storage.googleapis.com</code>可能需要科学上网才能访问。</li>
+</ol>
+<p>然后进行Tensorflow的安装，输入如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) $ pip install yourhttpsite  <span class="comment"># for Python 2.7</span></span><br><span class="line">(tensorflow) $ pip3 install yourhttpsite <span class="comment"># for Python 3.x</span></span><br></pre></td></tr></table></figure></p>
+<p><code>yourhttpsite</code>就是拼凑出来的网址。</p>
+<p>如果pip提示无法从代理处下载文件，则可以先将文件从网址下载下来并存在<code>~</code>（即家目录）或者自定义目录下，然后通过如下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) $ pip install filename  <span class="comment"># for Python 2.7</span></span><br><span class="line">(tensorflow) $ pip3 install filename <span class="comment"># for Python 3.x</span></span><br></pre></td></tr></table></figure></p>
+<p><code>filename</code>即下载的<code>.whl</code>文件（可能需要输入完整路径）。</p>
+<h1 id="TensorFlow的使用"><a href="#TensorFlow的使用" class="headerlink" title="TensorFlow的使用"></a>TensorFlow的使用</h1><h2 id="启动TensorFlow环境"><a href="#启动TensorFlow环境" class="headerlink" title="启动TensorFlow环境"></a>启动TensorFlow环境</h2><p>请参照<a href="#进入Virtualenv环境">进入Virtualenv环境</a>步骤进行。</p>
+<h2 id="测试TensorFlow环境"><a href="#测试TensorFlow环境" class="headerlink" title="测试TensorFlow环境"></a>测试TensorFlow环境</h2><p>先进入TensorFlow环境，然后输入如下代码进行测试：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">hello = tf.constant(<span class="string">'Hello, TensorFlow!'</span>)</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(hello))</span><br></pre></td></tr></table></figure></p>
+<p>输出<code>Hello, TensorFlow!</code>且无报错即可。如果报错请参考<a href="https://www.tensorflow.org/install/install_linux#CommonInstallationProblems" target="_blank" rel="noopener">官网</a>或者上网寻找解决方案。</p>
+<h2 id="退出TensorFlow环境"><a href="#退出TensorFlow环境" class="headerlink" title="退出TensorFlow环境"></a>退出TensorFlow环境</h2><p>在环境中输入<code>deactivate</code>即可，即：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow) $ deactivate</span><br></pre></td></tr></table></figure></p>
+<h1 id="TensorFlow的卸载"><a href="#TensorFlow的卸载" class="headerlink" title="TensorFlow的卸载"></a>TensorFlow的卸载</h1><p>卸载时直接将其所在的Virtualenv文件夹删除即可，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf targetDirectory</span><br></pre></td></tr></table></figure></p>
+<p><code>targetDirectory</code>即Virtualenv环境文件夹。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-02-02T10:46:53.572Z" itemprop="dateUpdated">2018-02-02 18:46:53</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://lrscy.github.io">
+            <img src="../../../../img/avatar.jpg" alt="Meow">
+            Meow
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Tensorflow/">Tensorflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Ubuntu/">Ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/&title=《Ubuntu 16.04下TensorFlow安装》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/&title=《Ubuntu 16.04下TensorFlow安装》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu 16.04下TensorFlow安装》 — Meow&url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../01/Ubuntu-CUDA-Tookit-8-Install/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Ubuntu 16.04下CUDA Tookit 8安装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        Total Visits：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        Total Visitors：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Meow &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/&title=《Ubuntu 16.04下TensorFlow安装》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/&title=《Ubuntu 16.04下TensorFlow安装》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu 16.04下TensorFlow安装》 — Meow&url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2018/02/02/Ubuntu-Tensorflow-config/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+    
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Where are you!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)Hi! Welcome Back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

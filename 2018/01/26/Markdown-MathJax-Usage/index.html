@@ -311,23 +311,38 @@ ga('send', 'pageview');
     
 
 
-<section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
     <script>
-    var disqus_shortname = 'true';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'true' == 'true',
+            appId: "flgn5yN4nyhhyKPBimaT89Q8-gzGzoHsz",
+            appKey: "4yw3zmlMB7KjyFIzwIlYUnKz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</section>
-
-
-
-
-
-
-
-
-
+    <!-- Valine Comments end -->
 
 
 
@@ -413,7 +428,7 @@ ga('send', 'pageview');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2018/01/26/Markdown-MathJax-Usage/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3a0W7DIAwF0P7/T3fSnjZVJdeGTCscnqI2JTk8uDbm8YjH83u8Xv/85HW8m+f1nvH8ywYGBsbHMp7DkT9m/Nt3+Py3F8uEgYFxAGMmyCaPHGN6S4aBgYExDpozYTpZIAwMDIyZgJsEzV4IHi8EBgYGRv6A6hg/fj6sY2BgnMCYaQzcff1H/Q0MDIx/zLgjgCZNzefSgYGBsTdjXIL2gm8Vls928YYYGBibMpJb802xXlDuHS/7NQMGBsbWjHzba9Xn+XZbEr6jfwMMDIwPZ/TKy3GIXPu60XJgYGAcz0hC6h3hO1ksDAyMMxm9w17Rw4qtykJpjYGBcQCjuumfp3291DDfhsPAwDiBsSpRmz9yUW1hFtqZGBgYH87IC8uZknU+TbxITDEwMLZm9F6i2SON8eX/CgwMjAMYedMxL3R7obbafsDAwDiHUW0AVDfRei2EZCEujlxgYGBswUiCXfUAxKoZCsc+MDAwtmZUt7RmDoFVw+jMPRgYGPsx1haf1ZZnPufFAmFgYBzD6B0Fqx6eqI6oSYCBgbE1Y77dmH9bzlKLzQwMDIz9GDOBL9kIK6d3xRIaAwPjBMaqCJ1Mlyd2eTqIgYFxDqNaQFZL3F6boZw4YmBgHMDoBb7qFttjYlzMhoGBgTFxTx4hp5YDAwMDI97uHzc1c0y58sbAwDiAsaoZMJ9WNlNJDAyMrRmr0rhqCK4G1morFAMDYwvGFx/48C6S158MAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

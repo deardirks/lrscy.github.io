@@ -306,18 +306,18 @@ ga('send', 'pageview');
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="../../02/Ubuntu-SSH-config/" id="post-prev" class="post-nav-link">
+      <a href="../Ubuntu-Github-config/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Ubuntu 16.04下(多)SSH配置</h4>
+        <h4 class="title">Ubuntu 16.04下Github配置</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="../Ubuntu-Github-config/" id="post-next" class="post-nav-link">
+      <a href="../../../04/30/Ubuntu-Github-io-config-Jekyll/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Ubuntu 16.04下Github配置</h4>
+        <h4 class="title">Ubuntu 16.04下从零起步搭建配置github.io博客——Jekyll</h4>
       </a>
     </div>
   
@@ -328,23 +328,38 @@ ga('send', 'pageview');
     
 
 
-<section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
     <script>
-    var disqus_shortname = 'true';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'true' == 'true',
+            appId: "flgn5yN4nyhhyKPBimaT89Q8-gzGzoHsz",
+            appKey: "4yw3zmlMB7KjyFIzwIlYUnKz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</section>
-
-
-
-
-
-
-
-
-
+    <!-- Valine Comments end -->
 
 
 
@@ -430,7 +445,7 @@ ga('send', 'pageview');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2017/05/01/Ubuntu-Ruby-base-config/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aO3LCQBAFQN//0rjKkQMvfm9WuMyqFVEggVrBML+Pj/h4fB3fX6+O1TnJN6/euezAwMB4W0Z+W89/5vn5K9Lzd5J7w8DAuA8jD7J5SM0fR/L4frlnDAwMjJKaAK76XQwMDIw8dCYFbZ4OYmBgYMyK2LbczcNr+4AwMDDuxpgNBv7m9cvnGxgYGP+e8SiP5NrZL27dFQYGxtGMdt1hH9OWuPmoAAMD42xGHhxnn+bfnC9kYGBg3IfRjhjzln27YBG1/ldXYWBgHM3IU7EkCOZp384S2PJ8DAyMoxk74S8vhtv2WZtWYmBgnMpolypmmdhOGRy9xsDAOJqxc+uzJt1sqBl9PwYGxtGMdpy5E47bSUU7QsDAwDiV0RaoO638JJheMOXAwMA4iJGvZLVNsWL0OGrhLXNbDAyM4xh5SM1J9ZJE8ECLRQ0MDIzjGLMVipadr1nkfwA/zDcwMDAOZeynaLMUsF1Em40oMDAwTmLMkrbZgsVswFDkthgYGMcxcmtbvrYtvFlZi4GBcR9Gvh5xFW8WaqMZLAYGxnGMWatrf5C5VU8nRSwGBsZBjEd5FM+mbMkl4X75KQYGxtGMWYDLA3TLzhPWC0aYGBgYb8XIV77a5v7OeLIO9BgYGDdgzFYiEtJVGx+/XIWBgYERN/dnTbp2ILrsGmJgYGCUjP3GXBLcMTAw7sNoy9FXFLRJalgsW2BgYBzEeMVgIAnZs0Rz9ggwMDDelvEJ0/cZBtwGHzMAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

@@ -330,9 +330,9 @@ ga('send', 'pageview');
 
   
     <div class="waves-block waves-effect next">
-      <a href="../../01/Ubuntu-Ruby-base-config/" id="post-next" class="post-nav-link">
+      <a href="../../01/Ubuntu-Github-config/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Ubuntu 16.04下Ruby基础配置</h4>
+        <h4 class="title">Ubuntu 16.04下Github配置</h4>
       </a>
     </div>
   
@@ -343,23 +343,38 @@ ga('send', 'pageview');
     
 
 
-<section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
     <script>
-    var disqus_shortname = 'true';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'true' == 'true',
+            appId: "flgn5yN4nyhhyKPBimaT89Q8-gzGzoHsz",
+            appKey: "4yw3zmlMB7KjyFIzwIlYUnKz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</section>
-
-
-
-
-
-
-
-
-
+    <!-- Valine Comments end -->
 
 
 
@@ -445,7 +460,7 @@ ga('send', 'pageview');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://lrscy.github.io/2017/05/02/Ubuntu-SSH-config/" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQW7DMAwEwPz/0+k1QNt0l3IKWBqdgtiwPD4QpMjHI17Pl/X6z/urr/8kz/z+5IsXBgbGbRnPtyvf8v2rJ0/Or/6wCwYGxgGM3zae3TPjzfbFwMDASO5JVhJ8MTAwMK5irBefORsDAwOjLWLXA27yaT5ei2NgYNyQkYfI///9kf4GBgbGrRjPcq2kd3mSV78VBgbG1ow8wOWveFWrsh3+wMDAOIHxPvDlieNVgxf1QR4GBsYxjDyNa8vOPNEcNicwMDA2ZSSPy8vR9p72aO/XXTAwMLZmXFusztqcyefLAzcGBsZpjPZYP3+VWcpYtDYxMDC2Y7QJ4soZV5t0FsNqGBgYmzKS463ZkESeFF7QOsXAwDiAsd6qfJQrCehFmoiBgXEYIx/Vmo1/tWVw9LEwMDAOYMwC4qxhmYOLtBUDA+MYRluszkJ22yooMk0MDIytGUnIa0NhfgDXtk5/4GFgYGzNmEWw9bGMz+2CgYGxKyNpNM4O0dpQ2zYnovYABgbGpoyVo7d2aGN29IaBgYGRl6nRMET5nHZoAwMDY2/Gs1x5zTgb/EqSyDq3xcDAuDmjDW3twf2sDM6bEzUGAwPjtow2XCblaNIMyAvapQwXAwNjI8bshfLmZTJa0dbfGBgYGJ8YC2tL1noIDAMDA6M8FEuCb5tu/lHEYmBgbM1YHwubBc1ZwMXAwDiNMSsdVxqKbYNzFtwxMDC2YHwB+1b6CGJP600AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

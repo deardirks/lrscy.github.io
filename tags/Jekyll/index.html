@@ -153,11 +153,27 @@ ga('send', 'pageview');
             ">All</a>
         
 
-            <a href="../Hexo/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
+            <a href="../Cocos2d-x/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Cocos2d-x</a>
 
         
 
-            <a href="../Github/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">Github</a>
+            <a href="../Android-Studio/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Android Studio</a>
+
+        
+
+            <a href="../Hexo/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Hexo</a>
+
+        
+
+            <a href="../Github/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Github</a>
+
+        
+
+            <a href="../Markdown/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">Markdown</a>
+
+        
+
+            <a href="../MathJax/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">MathJax</a>
 
         
 
@@ -201,31 +217,15 @@ ga('send', 'pageview');
 
         
 
-            <a href="../Cocos2d-x/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">Cocos2d-x</a>
+            <a href="../NVIDIA/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">NVIDIA</a>
 
         
 
-            <a href="../Android-Studio/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Android Studio</a>
+            <a href="../Ruby/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Ruby</a>
 
         
 
-            <a href="../Ruby/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Ruby</a>
-
-        
-
-            <a href="../Tensorflow/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Tensorflow</a>
-
-        
-
-            <a href="../Markdown/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Markdown</a>
-
-        
-
-            <a href="../MathJax/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">MathJax</a>
-
-        
-
-            <a href="../NVIDIA/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">NVIDIA</a>
+            <a href="../Tensorflow/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Tensorflow</a>
 
         
     </nav>
@@ -398,20 +398,20 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-            processEscapes: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-    });
-    
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
 </script>
 
 <script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lrscy.github.io/"/>
-  <updated>2018-02-02T10:46:53.572Z</updated>
+  <updated>2018-02-11T13:51:50.435Z</updated>
   <id>https://lrscy.github.io/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cocos2d-x v3.16 Y轴翻转</title>
+    <link href="https://lrscy.github.io/2018/02/11/Cocos2dx-3-16-Y-axis-Flip/"/>
+    <id>https://lrscy.github.io/2018/02/11/Cocos2dx-3-16-Y-axis-Flip/</id>
+    <published>2018-02-11T12:42:15.000Z</published>
+    <updated>2018-02-11T13:51:50.435Z</updated>
+    
+    <content type="html"><![CDATA[<p>Cocos2d-x的设计中，setPosition等的原点是在屏幕左下角，但是当把触摸点坐标转换到屏幕坐标点时发现其原点在左上角。这样设计的好处是自然的支持纵向的“自然滚动”（即向下划的时候上面的内容自然出现，反之亦然）。然而当不需要这个功能的时候，会在坐标变换上小折腾下。</p><p>由于在处理多点触碰和缩放时候这个坐标转换耗费了不少的时间，为了以后懒得在这个上面再费时间和脑力（就是懒emmmm），归纳一点：“<code>旧纵坐标减新纵坐标</code>”。今后再有类似问题就来看着这条改下就好了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Cocos2d-x的设计中，setPosition等的原点是在屏幕左下角，但是当把触摸点坐标转换到屏幕坐标点时发现其原点在左上角。这样设计的好处是自然的支持纵向的“自然滚动”（即向下划的时候上面的内容自然出现，反之亦然）。然而当不需要这个功能的时候，会在坐标变换上小折腾下。
+      
+    
+    </summary>
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/categories/Cocos2d-x/"/>
+    
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/tags/Cocos2d-x/"/>
+    
+      <category term="Axis" scheme="https://lrscy.github.io/tags/Axis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cocos2dx-3.16-Android-Multi-Touch</title>
+    <link href="https://lrscy.github.io/2018/02/11/Cocos2dx-3-16-Android-Multi-Touch/"/>
+    <id>https://lrscy.github.io/2018/02/11/Cocos2dx-3-16-Android-Multi-Touch/</id>
+    <published>2018-02-11T12:40:58.000Z</published>
+    <updated>2018-02-11T14:06:12.635Z</updated>
+    
+    <content type="html"><![CDATA[<p>网上有关Cocos2d-x v3.x版本的多点触控的资料并不多，在尝试时发现了如下几个坑。跳出坑最好的办法就是去读官方给出的Testapp的源码，这样能看快的了解到官方时如何使用各种功能的，模仿和学起来都很快且很到位。如果更有能力的去多看看API和源码也是很好的学习途径。</p><h1 id="onTouchesBegan-Moved-Ended-Cancelled函数的参数"><a href="#onTouchesBegan-Moved-Ended-Cancelled函数的参数" class="headerlink" title="onTouchesBegan/Moved/Ended/Cancelled函数的参数"></a>onTouchesBegan/Moved/Ended/Cancelled函数的参数</h1><p>网上众多教程基本都是基于2.x版本，所用函数名及参数有许多为<code>cc</code>开头，且触摸回调函数的参数基本为：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MoreTouches::ccTouchesMoved( cocos2d::CCSet *pTouches,</span><br><span class="line">                                  cocos2d::CCEvent *pEvent );</span><br></pre></td></tr></table></figure></p><p>在当前3.16版本中，其改为了<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onTouchesBegan</span><span class="params">( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cocos2d::Touch *&gt; &amp;touches,</span></span></span><br><span class="line"><span class="function"><span class="params">                     cocos2d::Event *event )</span></span>;</span><br></pre></td></tr></table></figure></p><p>不再使用<code>set</code>作为触摸点的存储结构，而是采用<code>vector</code>。</p><h1 id="onTouchesBegan传入参数touches的问题"><a href="#onTouchesBegan传入参数touches的问题" class="headerlink" title="onTouchesBegan传入参数touches的问题"></a>onTouchesBegan传入参数touches的问题</h1><p>开始参考网上多点触控的代码进行实验，但是在<code>onTouchesBegan</code>回调函数上永远出问题，后来发现<code>onTouchesBegan</code>回调函数的<code>touches</code>参数永远只存了一个变量（那你用vector存什么呀啊喂！）。在进行了众多测试以及上网寻找资料（不小心还挖了个坟emmmm）后决定仔细研究下官方的Testapp源码。</p><p>原先模仿网上函数写法的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Hello::onTouchesBegan( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cocos2d::Touch *&gt; &amp;touches,</span><br><span class="line">                            cocos2d::Event *event ) &#123;</span><br><span class="line">        <span class="keyword">if</span>( touches.size() &gt;= <span class="number">2</span> ) &#123; ... &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure></p><p>这段代码的<code>touches.size()</code>的值永远是<code>1</code>。官方给出的<code>MultiTouch</code>的源代码部分如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Map&lt;<span class="keyword">int</span>, TouchPoint *&gt; s_map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MultiTouchTest::onTouchesBegan( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Touch *&gt; &amp;touches,</span><br><span class="line">                                     Event *event ) &#123;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">auto</span> &amp;item: touches ) &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>最开始看代码的时候还一脸欢喜，这官方给的例子不是明显的在说<code>touches</code>里面会存多变量的么。直到我用<code>log</code>打出来<code>touches.size()</code>后才“惊喜”的发现这值也是<code>1</code>（那你用vector干嘛呢遍历啥呢啊喂！）。</p><p>目前反推<code>onTouchesBegan</code>的设计逻辑是说一个指头的触摸激活一次<code>onTouchesBegan</code>，每个触摸的初始化单独做一次。这样的好处在于当多指相差时间很长才都按到屏幕上时，也能可以通过设计逻辑很容易的将其识别为多指操作，而不是多次单指操作。就算真的物理上是同时按住的时候也可能会给序列化处理成先后两次触摸。唯独麻烦的一点就是程序逻辑设计上要费点心思了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;网上有关Cocos2d-x v3.x版本的多点触控的资料并不多，在尝试时发现了如下几个坑。跳出坑最好的办法就是去读官方给出的Testapp的源码，这样能看快的了解到官方时如何使用各种功能的，模仿和学起来都很快且很到位。如果更有能力的去多看看API和源码也是很好的学习途径。&lt;
+      
+    
+    </summary>
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/categories/Cocos2d-x/"/>
+    
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/tags/Cocos2d-x/"/>
+    
+      <category term="Android" scheme="https://lrscy.github.io/tags/Android/"/>
+    
+      <category term="Multi Touch" scheme="https://lrscy.github.io/tags/Multi-Touch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cocos2d-x v3.16 Android Studio添加新类</title>
+    <link href="https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/"/>
+    <id>https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/</id>
+    <published>2018-02-03T12:29:01.000Z</published>
+    <updated>2018-02-11T13:56:58.662Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的<code>.h</code>和<code>.cpp</code>以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的<code>.cpp</code>问家加入编译配置文件中。</p><p>后来发现在左侧<code>External Build Files</code>中，有个叫做<code>Android.mk</code>的文件，需要在其中的<code>LOCAL_SRC_FILES</code>变量中加入新的<code>.cpp</code>文件。即：<br><figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := <span class="variable">$(LOCAL_PATH)</span>/hellocpp/main.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/AppDelegate.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/HelloWorldScene.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/Hello.cpp</span><br></pre></td></tr></table></figure></p><p>想必大家都读得懂怎么向这个变量中加入新的文件，其中<code>Hello.cpp</code>就是我添加的新<code>.cpp</code>文件。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的&lt;code&gt;.h&lt;/code&gt;和&lt;code&gt;.cpp&lt;/code&gt;以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动
+      
+    
+    </summary>
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/categories/Cocos2d-x/"/>
+    
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/tags/Cocos2d-x/"/>
+    
+      <category term="Android Studio" scheme="https://lrscy.github.io/tags/Android-Studio/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 16.04下TensorFlow安装</title>
@@ -71,13 +154,40 @@
   </entry>
   
   <entry>
-    <title>Cocos2d-x v3.16踩过的坑</title>
-    <link href="https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/"/>
-    <id>https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/</id>
-    <published>2018-01-26T08:35:23.000Z</published>
-    <updated>2018-02-03T04:26:18.299Z</updated>
+    <title>Cocos2d-x v3.16 屏幕显示偏移</title>
+    <link href="https://lrscy.github.io/2018/01/26/Cocos2dx-3-16-Display-Offset/"/>
+    <id>https://lrscy.github.io/2018/01/26/Cocos2dx-3-16-Display-Offset/</id>
+    <published>2018-01-26T12:28:36.000Z</published>
+    <updated>2018-02-11T13:56:47.978Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。</p><h1 id="屏幕显示偏移"><a href="#屏幕显示偏移" class="headerlink" title="屏幕显示偏移"></a>屏幕显示偏移</h1><p>在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( size.width / <span class="number">2</span>, size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p><p>目前不知道时从哪个版本开始的，直接使用上述代码会导致<code>sprite</code>下偏移(沿y轴)一定量但无左右偏移(沿x轴)。查找资料未果后看Helloworld样例，发现其用到了Director类中另一个变量纠正这个问题：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br></pre></td></tr></table></figure></p><p>这里<code>origin</code>是真正的屏幕左下角的位置，所有屏幕上的显示的图像都要依据这个坐标进行调整。也就是说上述代码要改成：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( origin.x + size.width / <span class="number">2</span>, origin.y + size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p><p>这时，屏幕偏移问题解决了，<code>sprite</code>也在屏幕的真正的正中央。</p><h1 id="Android-Studio添加新类"><a href="#Android-Studio添加新类" class="headerlink" title="Android Studio添加新类"></a>Android Studio添加新类</h1><p>在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的<code>.h</code>和<code>.cpp</code>以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的<code>.cpp</code>问家加入编译配置文件中。</p><p>后来发现在左侧<code>External Build Files</code>中，有个叫做<code>Android.mk</code>的文件，需要在其中的<code>LOCAL_SRC_FILES</code>变量中加入新的<code>.cpp</code>文件。即：<br><figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := <span class="variable">$(LOCAL_PATH)</span>/hellocpp/main.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/AppDelegate.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/HelloWorldScene.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/Hello.cpp</span><br></pre></td></tr></table></figure></p><p>想必大家都读得懂怎么向这个变量中加入新的文件，其中<code>Hello.cpp</code>就是我添加的新<code>.cpp</code>文件。</p><p>To be continue…</p>]]></content>
+    <content type="html"><![CDATA[<p>在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( size.width / <span class="number">2</span>, size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p><p>目前不知道时从哪个版本开始的，直接使用上述代码会导致<code>sprite</code>下偏移(沿y轴)一定量但无左右偏移(沿x轴)。查找资料未果后看Helloworld样例，发现其用到了Director类中另一个变量纠正这个问题：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br></pre></td></tr></table></figure></p><p>这里<code>origin</code>是真正的屏幕左下角的位置，所有屏幕上的显示的图像都要依据这个坐标进行调整。也就是说上述代码要改成：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( origin.x + size.width / <span class="number">2</span>, origin.y + size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p><p>这时，屏幕偏移问题解决了，<code>sprite</code>也在屏幕的真正的正中央。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：&lt;br&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/categories/Cocos2d-x/"/>
+    
+    
+      <category term="Cocos2d-x" scheme="https://lrscy.github.io/tags/Cocos2d-x/"/>
+    
+      <category term="Display Offset" scheme="https://lrscy.github.io/tags/Display-Offset/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cocos2d-x v3.16踩过的坑</title>
+    <link href="https://lrscy.github.io/2018/01/26/Cocos2dx-3-16-Problems/"/>
+    <id>https://lrscy.github.io/2018/01/26/Cocos2dx-3-16-Problems/</id>
+    <published>2018-01-26T08:35:23.000Z</published>
+    <updated>2018-02-11T13:58:01.623Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。</p><p>UPDATE 2018.02.11:之前是写在一起的，但是看起来太乱，就拆分到各自单独篇章中去了，这里只做个目录。</p><ol><li><a href="/2018/01/26/Cocos2dx-3-16-Display-Offset">屏幕显示偏移</a></li><li><a href="/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class">Android Studio添加新类</a></li><li><a href="/2018/02/11/Cocos2dx-3-16-Android-Multi-Touch">多点触控</a></li><li><a href="/2018/02/11/Cocos2dx-3-16-Y-axis-Flip">Y轴翻转</a></li></ol><p>To be continue…</p>]]></content>
     
     <summary type="html">
     
@@ -145,9 +255,9 @@
       <category term="Config" scheme="https://lrscy.github.io/categories/Config/"/>
     
     
-      <category term="Markdown" scheme="https://lrscy.github.io/tags/Markdown/"/>
-    
       <category term="Hexo" scheme="https://lrscy.github.io/tags/Hexo/"/>
+    
+      <category term="Markdown" scheme="https://lrscy.github.io/tags/Markdown/"/>
     
   </entry>
   
@@ -265,36 +375,6 @@
   </entry>
   
   <entry>
-    <title>Ubuntu 16.04下Github配置</title>
-    <link href="https://lrscy.github.io/2017/05/01/Ubuntu-Github-config/"/>
-    <id>https://lrscy.github.io/2017/05/01/Ubuntu-Github-config/</id>
-    <published>2017-04-30T16:00:00.000Z</published>
-    <updated>2018-02-02T08:56:46.455Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文记录了我配置Github时候的全过程。</p><p>本文是在Ubuntu 16.04LTS下配置的，如果使用其他操作系统请自行查找对应命令或解决方案。</p><p>以下代码区域，带有<code>$</code>打头的表示需要在控制台（终端或称命令行）下面执行（不包括<code>$</code>符号）</p><h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><p>Ubuntu下需要安装git，输入命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure></p><h1 id="Github账户注册"><a href="#Github账户注册" class="headerlink" title="Github账户注册"></a>Github账户注册</h1><p>你需要一个Github的账户才能使用github.io服务。所以去<code>github.com</code>点击右上角的<code>Sign Up</code>注册即可。</p><h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><p>我们需要使用ssh来和github上的远程仓库进行通信，所以需要检查和配置ssh。</p><p>首先需要检查电脑上现有的ssh key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure></p><p>如果提示：<code>No such file or dictionary</code> 则说明你是第一次使用git。</p><p>如果你是第一次使用git，那么你需要做如下工作。否则可以跳过此节。</p><p>生成新的SSH KEY:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"youraddress@youremail.com"</span></span><br></pre></td></tr></table></figure></p><p>这里有几点需要注意的：</p><ol><li><code>-C</code>中的C是大写字母</li><li><code>youraddress@youremail.com</code>是你Github的注册邮箱<br>其余的一路回车就能完成了。其中.pub是公钥，需要给到远程主机上，这点我们下一节再讲。</li></ol><p>如果你需要连接多ssh终端，详见「<a href="/2017/05/02/Ubuntu-SSH-config">Ubuntu16.04下(多)SSH配置</a>」。</p><h1 id="Github配置"><a href="#Github配置" class="headerlink" title="Github配置"></a>Github配置</h1><p>仅仅本地配置好了是不够的，你需要让你的github账户认识你。所以你需要按照以下步骤操作：</p><ol><li>去登录github账户，在右上角点击头像找到Settings</li><li>点进去后点击左侧栏中的SSH and GPG keys</li><li>点击右侧New SSH key</li><li>随意输入个能带便当前机器的名字，并把本地.ssh目录下生成的关于github的.pub文件拷贝进来</li><li>保存即可</li></ol><h1 id="Github连接检查"><a href="#Github连接检查" class="headerlink" title="Github连接检查"></a>Github连接检查</h1><p>当一切配置妥当后，在终端中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p><p>如果你是第一次输入此命令，可能遇到如下提示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is xx:xx...xx:xx.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)?</span></span><br></pre></td></tr></table></figure></p><p>此时输入yes即可，然后会出现：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi xxx! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure></p><p>此时表明你的github配置完成了</p><h1 id="本地个人信息配置"><a href="#本地个人信息配置" class="headerlink" title="本地个人信息配置"></a>本地个人信息配置</h1><p>此时你已经可以通过SSH连接到Github了，但是还有一些个人信息需要完善才能够和Github愉快的通信。</p><p>Git会依据本地设定的用户名和邮箱向远程主机提交更改，Github也是依据这些信息进行权限管理的。如果你当前只使用一个Github帐号，那么你需要以下两个命令来完善本地个人信息设定：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"your github name"</span></span><br><span class="line">$ git config --global user.email <span class="string">"youraddress@youremail.com"</span></span><br></pre></td></tr></table></figure></p><p>上述命令中your github name是你的github用户名，youraddress@youremail.com是你github的注册邮箱。</p><p>如果你需要配置多Github账户，则需要用如下命令将–global所设置的参数撤销掉：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global <span class="built_in">unset</span> user.name</span><br><span class="line">$ git config --global <span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></p><p>在每个git根目录下自行建立个人信息，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name <span class="string">"your github name"</span></span><br><span class="line">$ git config user.email <span class="string">"youraddress@youremail.com"</span></span><br></pre></td></tr></table></figure></p><p>上述命令中<code>your github name</code>是你的github用户名，<code>youraddress@youremail.com</code>是你github的注册邮箱。</p><p>至此，Github配置已全部完成。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;本文记录了我配置Github时候的全过程。&lt;/p&gt;
-&lt;p&gt;本文是在Ubuntu 16.04LTS下配置的，如果使用其他操作系统请自行查找对应
-      
-    
-    </summary>
-    
-      <category term="Config" scheme="https://lrscy.github.io/categories/Config/"/>
-    
-    
-      <category term="Ubuntu" scheme="https://lrscy.github.io/tags/Ubuntu/"/>
-    
-      <category term="Github" scheme="https://lrscy.github.io/tags/Github/"/>
-    
-      <category term="SSH" scheme="https://lrscy.github.io/tags/SSH/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Ubuntu 16.04下Ruby基础配置</title>
     <link href="https://lrscy.github.io/2017/05/01/Ubuntu-Ruby-base-config/"/>
     <id>https://lrscy.github.io/2017/05/01/Ubuntu-Ruby-base-config/</id>
@@ -318,6 +398,36 @@
       <category term="Ubuntu" scheme="https://lrscy.github.io/tags/Ubuntu/"/>
     
       <category term="Ruby" scheme="https://lrscy.github.io/tags/Ruby/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu 16.04下Github配置</title>
+    <link href="https://lrscy.github.io/2017/05/01/Ubuntu-Github-config/"/>
+    <id>https://lrscy.github.io/2017/05/01/Ubuntu-Github-config/</id>
+    <published>2017-04-30T16:00:00.000Z</published>
+    <updated>2018-02-02T08:56:46.455Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文记录了我配置Github时候的全过程。</p><p>本文是在Ubuntu 16.04LTS下配置的，如果使用其他操作系统请自行查找对应命令或解决方案。</p><p>以下代码区域，带有<code>$</code>打头的表示需要在控制台（终端或称命令行）下面执行（不包括<code>$</code>符号）</p><h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><p>Ubuntu下需要安装git，输入命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure></p><h1 id="Github账户注册"><a href="#Github账户注册" class="headerlink" title="Github账户注册"></a>Github账户注册</h1><p>你需要一个Github的账户才能使用github.io服务。所以去<code>github.com</code>点击右上角的<code>Sign Up</code>注册即可。</p><h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><p>我们需要使用ssh来和github上的远程仓库进行通信，所以需要检查和配置ssh。</p><p>首先需要检查电脑上现有的ssh key:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure></p><p>如果提示：<code>No such file or dictionary</code> 则说明你是第一次使用git。</p><p>如果你是第一次使用git，那么你需要做如下工作。否则可以跳过此节。</p><p>生成新的SSH KEY:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"youraddress@youremail.com"</span></span><br></pre></td></tr></table></figure></p><p>这里有几点需要注意的：</p><ol><li><code>-C</code>中的C是大写字母</li><li><code>youraddress@youremail.com</code>是你Github的注册邮箱<br>其余的一路回车就能完成了。其中.pub是公钥，需要给到远程主机上，这点我们下一节再讲。</li></ol><p>如果你需要连接多ssh终端，详见「<a href="/2017/05/02/Ubuntu-SSH-config">Ubuntu16.04下(多)SSH配置</a>」。</p><h1 id="Github配置"><a href="#Github配置" class="headerlink" title="Github配置"></a>Github配置</h1><p>仅仅本地配置好了是不够的，你需要让你的github账户认识你。所以你需要按照以下步骤操作：</p><ol><li>去登录github账户，在右上角点击头像找到Settings</li><li>点进去后点击左侧栏中的SSH and GPG keys</li><li>点击右侧New SSH key</li><li>随意输入个能带便当前机器的名字，并把本地.ssh目录下生成的关于github的.pub文件拷贝进来</li><li>保存即可</li></ol><h1 id="Github连接检查"><a href="#Github连接检查" class="headerlink" title="Github连接检查"></a>Github连接检查</h1><p>当一切配置妥当后，在终端中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p><p>如果你是第一次输入此命令，可能遇到如下提示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is xx:xx...xx:xx.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)?</span></span><br></pre></td></tr></table></figure></p><p>此时输入yes即可，然后会出现：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi xxx! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure></p><p>此时表明你的github配置完成了</p><h1 id="本地个人信息配置"><a href="#本地个人信息配置" class="headerlink" title="本地个人信息配置"></a>本地个人信息配置</h1><p>此时你已经可以通过SSH连接到Github了，但是还有一些个人信息需要完善才能够和Github愉快的通信。</p><p>Git会依据本地设定的用户名和邮箱向远程主机提交更改，Github也是依据这些信息进行权限管理的。如果你当前只使用一个Github帐号，那么你需要以下两个命令来完善本地个人信息设定：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"your github name"</span></span><br><span class="line">$ git config --global user.email <span class="string">"youraddress@youremail.com"</span></span><br></pre></td></tr></table></figure></p><p>上述命令中your github name是你的github用户名，youraddress@youremail.com是你github的注册邮箱。</p><p>如果你需要配置多Github账户，则需要用如下命令将–global所设置的参数撤销掉：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global <span class="built_in">unset</span> user.name</span><br><span class="line">$ git config --global <span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></p><p>在每个git根目录下自行建立个人信息，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name <span class="string">"your github name"</span></span><br><span class="line">$ git config user.email <span class="string">"youraddress@youremail.com"</span></span><br></pre></td></tr></table></figure></p><p>上述命令中<code>your github name</code>是你的github用户名，<code>youraddress@youremail.com</code>是你github的注册邮箱。</p><p>至此，Github配置已全部完成。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;本文记录了我配置Github时候的全过程。&lt;/p&gt;
+&lt;p&gt;本文是在Ubuntu 16.04LTS下配置的，如果使用其他操作系统请自行查找对应
+      
+    
+    </summary>
+    
+      <category term="Config" scheme="https://lrscy.github.io/categories/Config/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://lrscy.github.io/tags/Ubuntu/"/>
+    
+      <category term="SSH" scheme="https://lrscy.github.io/tags/SSH/"/>
+    
+      <category term="Github" scheme="https://lrscy.github.io/tags/Github/"/>
     
   </entry>
   

@@ -24,25 +24,25 @@ ga('send', 'pageview');
     
     
     
-    <title>Cocos2d-x v3.16踩过的坑 | Meow</title>
+    <title>Cocos2d-x v3.16 Android Studio添加新类 | Meow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="Cocos2d-x,Android Studio">
-    <meta name="description" content="前言最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。 屏幕显示偏移在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：123auto size = Director::getInstance()-&amp;gt;ge">
+    <meta name="description" content="在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的.h和.cpp以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的.cpp问家加入编译配置文件中。 后来发现在左侧External Build Files中，有个叫做Android.mk的文件，需要在其中的LOCAL_SR">
 <meta name="keywords" content="Cocos2d-x,Android Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cocos2d-x v3.16踩过的坑">
-<meta property="og:url" content="https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/index.html">
+<meta property="og:title" content="Cocos2d-x v3.16 Android Studio添加新类">
+<meta property="og:url" content="https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/index.html">
 <meta property="og:site_name" content="Meow">
-<meta property="og:description" content="前言最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。 屏幕显示偏移在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：123auto size = Director::getInstance()-&amp;gt;ge">
+<meta property="og:description" content="在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的.h和.cpp以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的.cpp问家加入编译配置文件中。 后来发现在左侧External Build Files中，有个叫做Android.mk的文件，需要在其中的LOCAL_SR">
 <meta property="og:locale" content="en-US">
-<meta property="og:updated_time" content="2018-02-03T04:26:18.299Z">
+<meta property="og:updated_time" content="2018-02-11T13:56:58.662Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cocos2d-x v3.16踩过的坑">
-<meta name="twitter:description" content="前言最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。 屏幕显示偏移在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：123auto size = Director::getInstance()-&amp;gt;ge">
+<meta name="twitter:title" content="Cocos2d-x v3.16 Android Studio添加新类">
+<meta name="twitter:description" content="在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的.h和.cpp以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的.cpp问家加入编译配置文件中。 后来发现在左侧External Build Files中，有个叫做Android.mk的文件，需要在其中的LOCAL_SR">
     
         <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
     
@@ -123,7 +123,7 @@ ga('send', 'pageview');
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Cocos2d-x v3.16踩过的坑</div>
+        <div class="flex-col header-title ellipsis">Cocos2d-x v3.16 Android Studio添加新类</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -145,11 +145,11 @@ ga('send', 'pageview');
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Cocos2d-x v3.16踩过的坑</h1>
+        <h1 class="title">Cocos2d-x v3.16 Android Studio添加新类</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-01-26T08:35:23.000Z" itemprop="datePublished" class="page-time">
-  2018-01-26
+                <time datetime="2018-02-03T12:29:01.000Z" itemprop="datePublished" class="page-time">
+  2018-02-03
 </time>
 
 
@@ -167,21 +167,14 @@ ga('send', 'pageview');
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#屏幕显示偏移"><span class="post-toc-number">2.</span> <span class="post-toc-text">屏幕显示偏移</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Android-Studio添加新类"><span class="post-toc-number">3.</span> <span class="post-toc-text">Android Studio添加新类</span></a></li></ol>
-        </nav>
-    </aside>
 
-
-<article id="post-Cocos2d-x-3-16-Problems"
+<article id="post-Cocos2dx-3-16-Android-Studio-Add-New-Class"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Cocos2d-x v3.16踩过的坑</h1>
+        <h1 class="post-card-title">Cocos2d-x v3.16 Android Studio添加新类</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-01-26 16:35:23" datetime="2018-01-26T08:35:23.000Z"  itemprop="datePublished">2018-01-26</time>
+            <time class="post-time" title="2018-02-03 20:29:01" datetime="2018-02-03T12:29:01.000Z"  itemprop="datePublished">2018-02-03</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Cocos2d-x/">Cocos2d-x</a></li></ul>
@@ -196,15 +189,9 @@ ga('send', 'pageview');
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近刚碰关于Cocos2d-x的知识，也上网查过很多资料，但是很少有讲最新v3.16的博客。因此在此记录下使用v3.16时候遇上的坑。且会不定期更新该篇博客。</p>
-<h1 id="屏幕显示偏移"><a href="#屏幕显示偏移" class="headerlink" title="屏幕显示偏移"></a>屏幕显示偏移</h1><p>在v3.16前，屏幕上显示Sprites, Nodes都是直接使用Director类获取可视区大小并直接在上面定位Nodes的，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( size.width / <span class="number">2</span>, size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p>
-<p>目前不知道时从哪个版本开始的，直接使用上述代码会导致<code>sprite</code>下偏移(沿y轴)一定量但无左右偏移(沿x轴)。查找资料未果后看Helloworld样例，发现其用到了Director类中另一个变量纠正这个问题：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br></pre></td></tr></table></figure></p>
-<p>这里<code>origin</code>是真正的屏幕左下角的位置，所有屏幕上的显示的图像都要依据这个坐标进行调整。也就是说上述代码要改成：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> size = Director::getInstance()-&gt;getVisibleSize();</span><br><span class="line">Vec2 origin = Director::getInstance()-&gt;getVisibleOrigin();</span><br><span class="line"><span class="keyword">auto</span> sprite = Sprite::create( <span class="string">"HelloWorld.png"</span> );</span><br><span class="line">sprite.setPosition( origin.x + size.width / <span class="number">2</span>, origin.y + size.height / <span class="number">2</span> );</span><br></pre></td></tr></table></figure></p>
-<p>这时，屏幕偏移问题解决了，<code>sprite</code>也在屏幕的真正的正中央。</p>
-<h1 id="Android-Studio添加新类"><a href="#Android-Studio添加新类" class="headerlink" title="Android Studio添加新类"></a>Android Studio添加新类</h1><p>在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的<code>.h</code>和<code>.cpp</code>以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的<code>.cpp</code>问家加入编译配置文件中。</p>
+            <p>在使用Android Studio编辑Cocos2d-x项目时，如果想添加一个Class进去，除了建立相对应的<code>.h</code>和<code>.cpp</code>以外，还需要让编译配置文件知道这个文件属于该项目。然而Android Studio 3.x版本自动同步时并不能将新类中的<code>.cpp</code>问家加入编译配置文件中。</p>
 <p>后来发现在左侧<code>External Build Files</code>中，有个叫做<code>Android.mk</code>的文件，需要在其中的<code>LOCAL_SRC_FILES</code>变量中加入新的<code>.cpp</code>文件。即：<br><figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := <span class="variable">$(LOCAL_PATH)</span>/hellocpp/main.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/AppDelegate.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/HelloWorldScene.cpp \</span><br><span class="line">                   <span class="variable">$(LOCAL_PATH)</span>/../../../Classes/Hello.cpp</span><br></pre></td></tr></table></figure></p>
 <p>想必大家都读得懂怎么向这个变量中加入新的文件，其中<code>Hello.cpp</code>就是我添加的新<code>.cpp</code>文件。</p>
-<p>To be continue…</p>
 
         </div>
 
@@ -213,7 +200,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-03T04:26:18.299Z" itemprop="dateUpdated">2018-02-03 12:26:18</time>
+    Last updated: <time datetime="2018-02-11T13:56:58.662Z" itemprop="dateUpdated">2018-02-11 21:56:58</time>
 </span><br>
 
 
@@ -243,7 +230,7 @@ ga('send', 'pageview');
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/&title=《Cocos2d-x v3.16 Android Studio添加新类》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -253,22 +240,22 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/&title=《Cocos2d-x v3.16 Android Studio添加新类》 — Meow&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x v3.16踩过的坑》 — Meow&url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&via=https://lrscy.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x v3.16 Android Studio添加新类》 — Meow&url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/&via=https://lrscy.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -291,18 +278,18 @@ ga('send', 'pageview');
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="../../../02/01/Ubuntu-CUDA-Tookit-8-Install/" id="post-prev" class="post-nav-link">
+      <a href="../../11/Cocos2dx-3-16-Android-Multi-Touch/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Ubuntu 16.04下CUDA Tookit 8安装</h4>
+        <h4 class="title">Cocos2dx-3.16-Android-Multi-Touch</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="../Hexo-Github-Backup/" id="post-next" class="post-nav-link">
+      <a href="../../02/Ubuntu-Tensorflow-config/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">在Github上备份Hexo博客</h4>
+        <h4 class="title">Ubuntu 16.04下TensorFlow安装</h4>
       </a>
     </div>
   
@@ -394,7 +381,7 @@ ga('send', 'pageview');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/&title=《Cocos2d-x v3.16 Android Studio添加新类》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -404,22 +391,22 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&title=《Cocos2d-x v3.16踩过的坑》 — Meow&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/&title=《Cocos2d-x v3.16 Android Studio添加新类》 — Meow&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x v3.16踩过的坑》 — Meow&url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/&via=https://lrscy.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x v3.16 Android Studio添加新类》 — Meow&url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/&via=https://lrscy.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/01/26/Cocos2d-x-3-16-Problems/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/02/03/Cocos2dx-3-16-Android-Studio-Add-New-Class/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -430,7 +417,7 @@ ga('send', 'pageview');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aO24DMQxFUe9/0+M2zUj3kRMDQ11VBqJYOikY8fP54HX9WeSn6/3rPevfai0ZMmS8lnEt192eDvXu6uTc21NkyJBxAOPu4Kc+k+C7/ry5swwZMmSAEElCNg++MmTIkNFnoK8u7ZchQ4aMThKbhlqeDNfOkiFDxjmMNDj+8vO/9DdkyJDxKkYnaJLvWTc4SfsT3UqGDBmjGWmCSgYj0mYkb4JudsqQIeMwBk8a0+GJWrMTPRZlyJAxlMFTR36t2h+oBZYhQ8ZoBgmgJIldH1z8P5C2MGXIkHEAo/YETPE8rSVnbfqxMmTIGMEg4YyPSqShmWSgqAAnQ4aM0YxO0b82rsHbnLzZKUOGjNmMdAwiLag91bzcsGXIkDGaUQujaVgMMunSGIcMGTJmM0jamRbC0mD92LCFDBkyDmB0xin4s6//PZsXrgwZMsYx0ovyx19tUOOBJUOGjHGMWtmLty3TYYv0DjJkyDiBwbNCni2mz7t0gqI4fiFDhoyXM+LyFjiM70nD62ZmRIYMGccwOknpBVanth9n4TJkyBjH6JTGOvv5MxFl5DJkyBjEuMJVK6LVxs54IU+GDBmzGf00tU/iaWqxdihDhowRjE6QTQfC0sIcT7BlyJBxAiNNMnkA5X+IzsNRhgwZMtIhLf7440MVG6oMGTJktAcyeDKcBmsZMmScw0jHUvlV0pQ1Hc6QIUPGCYz+IEVn/IuclSbMMmTIGMT4AimWnTsBFV/9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aQY7iQAwF0L7/pXu2PVID/9tVDCO9rFASiF8WVcb211d8fP84fp7Jv/Xo/ue/0z5xeODh4eEtQn8UUHLP89fxKNznz8q/+zAePDw8vGu8fFF+/vjkfBJo8gqibQYPDw/vA3inzmy2GTw8PLz/kZcHkW8hyYaEh4eH9zm8JLVta6SztDtnH6614OHh4XV116iL9Dmfr/T38PDw8NZd9XbBbTeP9s46Wjw8PLwLvE2hIU+F8xGr/Xfx8PDwbvPaNv+BdlRcYmjbYL98xsPDw7vAm7Wy2jHTthn2PLj2fjw8PLyzvOePzJfjWXusbWW1bDw8PLzbvLxtn2wes7LsbG2vG2B4eHh4a96mUDsrQ7TbSRLzi1oLHh4e3iFe23BKtod9aj7bBvImHB4eHt5tXjuM1Y5tta/gAAwPDw9vwdsUI9pyw+x954n1L1fx8PDwLvPOPqAtTMwKDS9iw8PDw7vGa//wn0q4Z+MFecEXDw8P7wZv9uC8eNGOCLSYfPwLDw8P7zavDbE9M3txbSKOh4eHd4OXL9mzZHpTFM6f/vA8Hh4e3jXeeyYU2oGDWTn4r3vw8PDwrvGSNnxbbG0DnW0GL67i4eHhXeDNBgXaH20T7jyeA7VqPDw8vAVv+Ie/LObOBhHyRB8PDw/vPbyk6LBZxDcDAQc2Jzw8PLxrvOfL8eZzu6DngwJ1xQUPDw/vMm9W0t2MBbRNryiVx8PDwzvK+y6PPJlOmmqz8YVi88DDw8O7wMuPZMigHQvYJ+JDDB4eHt6alzefZqMG+7S7Hb3Cw8PDew8vb4ydav8nyXq+adWX8fDw8N7Im7Wv8jJuO0ZQTJPh4eHh/SNeshy3xdbZeEG0qeDh4eFd4+Wp8Kwd1TbSZuWPVa0FDw8PL+a1f/g3CXQeUJuIH+jv4eHh4b3m/QGP95KX1f1HbAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

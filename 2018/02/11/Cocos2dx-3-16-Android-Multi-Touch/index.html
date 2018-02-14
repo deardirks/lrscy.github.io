@@ -39,7 +39,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Meow">
 <meta property="og:description" content="网上有关Cocos2d-x v3.x版本的多点触控的资料并不多，在尝试时发现了如下几个坑。跳出坑最好的办法就是去读官方给出的Testapp的源码，这样能看快的了解到官方时如何使用各种功能的，模仿和学起来都很快且很到位。如果更有能力的去多看看API和源码也是很好的学习途径。 onTouchesBegan/Moved/Ended/Cancelled函数的参数网上众多教程基本都是基于2.x版本，所用函数">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-11T14:06:12.635Z">
+<meta property="og:updated_time" content="2018-02-14T05:58:30.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocos2dx-3.16-Android-Multi-Touch">
 <meta name="twitter:description" content="网上有关Cocos2d-x v3.x版本的多点触控的资料并不多，在尝试时发现了如下几个坑。跳出坑最好的办法就是去读官方给出的Testapp的源码，这样能看快的了解到官方时如何使用各种功能的，模仿和学起来都很快且很到位。如果更有能力的去多看看API和源码也是很好的学习途径。 onTouchesBegan/Moved/Ended/Cancelled函数的参数网上众多教程基本都是基于2.x版本，所用函数">
@@ -177,7 +177,7 @@ ga('send', 'pageview');
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#onTouchesBegan-Moved-Ended-Cancelled函数的参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">onTouchesBegan/Moved/Ended/Cancelled函数的参数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#onTouchesBegan传入参数touches的问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">onTouchesBegan传入参数touches的问题</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#onTouchesBegan-Moved-Ended-Cancelled函数的参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">onTouchesBegan/Moved/Ended/Cancelled函数的参数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#onTouchesBegan-onTouchesEnded传入参数touches的问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">onTouchesBegan/onTouchesEnded传入参数touches的问题</span></a></li></ol>
         </nav>
     </aside>
 
@@ -207,7 +207,8 @@ ga('send', 'pageview');
 <h1 id="onTouchesBegan-Moved-Ended-Cancelled函数的参数"><a href="#onTouchesBegan-Moved-Ended-Cancelled函数的参数" class="headerlink" title="onTouchesBegan/Moved/Ended/Cancelled函数的参数"></a>onTouchesBegan/Moved/Ended/Cancelled函数的参数</h1><p>网上众多教程基本都是基于2.x版本，所用函数名及参数有许多为<code>cc</code>开头，且触摸回调函数的参数基本为：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MoreTouches::ccTouchesMoved( cocos2d::CCSet *pTouches,</span><br><span class="line">                                  cocos2d::CCEvent *pEvent );</span><br></pre></td></tr></table></figure></p>
 <p>在当前3.16版本中，其改为了<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onTouchesBegan</span><span class="params">( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cocos2d::Touch *&gt; &amp;touches,</span></span></span><br><span class="line"><span class="function"><span class="params">                     cocos2d::Event *event )</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>不再使用<code>set</code>作为触摸点的存储结构，而是采用<code>vector</code>。</p>
-<h1 id="onTouchesBegan传入参数touches的问题"><a href="#onTouchesBegan传入参数touches的问题" class="headerlink" title="onTouchesBegan传入参数touches的问题"></a>onTouchesBegan传入参数touches的问题</h1><p>开始参考网上多点触控的代码进行实验，但是在<code>onTouchesBegan</code>回调函数上永远出问题，后来发现<code>onTouchesBegan</code>回调函数的<code>touches</code>参数永远只存了一个变量（那你用vector存什么呀啊喂！）。在进行了众多测试以及上网寻找资料（不小心还挖了个坟emmmm）后决定仔细研究下官方的Testapp源码。</p>
+<h1 id="onTouchesBegan-onTouchesEnded传入参数touches的问题"><a href="#onTouchesBegan-onTouchesEnded传入参数touches的问题" class="headerlink" title="onTouchesBegan/onTouchesEnded传入参数touches的问题"></a>onTouchesBegan/onTouchesEnded传入参数touches的问题</h1><p>先说<code>onTouchesBegan</code>函数的传入参数。<code>onTouchesEnded</code>和<code>onTouchesBegan</code>的逻辑几乎是一样的。</p>
+<p>开始参考网上多点触控的代码进行实验，但是在<code>onTouchesBegan</code>回调函数上永远出问题，后来发现<code>onTouchesBegan</code>回调函数的<code>touches</code>参数永远只存了一个变量（那你用vector存什么呀啊喂！）。在进行了众多测试以及上网寻找资料（不小心还挖了个坟emmmm）后决定仔细研究下官方的Testapp源码。</p>
 <p>原先模仿网上函数写法的代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Hello::onTouchesBegan( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cocos2d::Touch *&gt; &amp;touches,</span><br><span class="line">                            cocos2d::Event *event ) &#123;</span><br><span class="line">        <span class="keyword">if</span>( touches.size() &gt;= <span class="number">2</span> ) &#123; ... &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
 <p>这段代码的<code>touches.size()</code>的值永远是<code>1</code>。官方给出的<code>MultiTouch</code>的源代码部分如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Map&lt;<span class="keyword">int</span>, TouchPoint *&gt; s_map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MultiTouchTest::onTouchesBegan( <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Touch *&gt; &amp;touches,</span><br><span class="line">                                     Event *event ) &#123;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">auto</span> &amp;item: touches ) &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>最开始看代码的时候还一脸欢喜，这官方给的例子不是明显的在说<code>touches</code>里面会存多变量的么。直到我用<code>log</code>打出来<code>touches.size()</code>后才“惊喜”的发现这值也是<code>1</code>（那你用vector干嘛呢遍历啥呢啊喂！）。</p>
@@ -220,7 +221,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-11T14:06:12.635Z" itemprop="dateUpdated">2018-02-11 22:06:12</time>
+    Last updated: <time datetime="2018-02-14T05:58:30.695Z" itemprop="dateUpdated">2018-02-14 13:58:30</time>
 </span><br>
 
 

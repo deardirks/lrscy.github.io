@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    
+    
+    
+    <title>数据清洗工具及相关使用方法 | Meow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="NLP,NMT">
+    <meta name="description" content="最近跟着老师参加了CWMT评测任务，稍微整理下目前用到的数据清洗相关的工具及使用方法。本人目前操作全在Ubuntu16.04下进行。 中文分词工具ansj安装ansjAnsj的Github地址 首先需要下载两个jar包ansj_seg和nlp-lang。一般来说都下载最新的jar包都不会有问题，只用下文件夹内名字最短的哪个jar包就可以了。如果需要用老版的ansj_seg的话，要去jar包中的.p">
+<meta name="keywords" content="NLP,NMT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据清洗工具及相关使用方法">
+<meta property="og:url" content="https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/index.html">
+<meta property="og:site_name" content="Meow">
+<meta property="og:description" content="最近跟着老师参加了CWMT评测任务，稍微整理下目前用到的数据清洗相关的工具及使用方法。本人目前操作全在Ubuntu16.04下进行。 中文分词工具ansj安装ansjAnsj的Github地址 首先需要下载两个jar包ansj_seg和nlp-lang。一般来说都下载最新的jar包都不会有问题，只用下文件夹内名字最短的哪个jar包就可以了。如果需要用老版的ansj_seg的话，要去jar包中的.p">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-20T09:42:40.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据清洗工具及相关使用方法">
+<meta name="twitter:description" content="最近跟着老师参加了CWMT评测任务，稍微整理下目前用到的数据清洗相关的工具及使用方法。本人目前操作全在Ubuntu16.04下进行。 中文分词工具ansj安装ansjAnsj的Github地址 首先需要下载两个jar包ansj_seg和nlp-lang。一般来说都下载最新的jar包都不会有问题，只用下文件夹内名字最短的哪个jar包就可以了。如果需要用老版的ansj_seg的话，要去jar包中的.p">
+    
+        <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Meow</h5>
+          <a href="mailto:ruosenlee@gmail.com" title="ruosenlee@gmail.com" class="mail">ruosenlee@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html"  >
+                <i class="icon icon-lg icon-home"></i>
+                Homepage
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../links"  >
+                <i class="icon icon-lg icon-link"></i>
+                Links
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lrscy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">数据清洗工具及相关使用方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">数据清洗工具及相关使用方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-20T06:50:09.000Z" itemprop="datePublished" class="page-time">
+  2018-03-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/NLP/">NLP</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#中文分词工具ansj"><span class="post-toc-number">1.</span> <span class="post-toc-text">中文分词工具ansj</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装ansj"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装ansj</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用方法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#英文分词工具tokenizer-perl"><span class="post-toc-number">2.</span> <span class="post-toc-text">英文分词工具tokenizer.perl</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装tokenizer-perl"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装tokenizer.perl</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用方法-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#词对齐工具fast-align"><span class="post-toc-number">3.</span> <span class="post-toc-text">词对齐工具fast_align</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装fast-align"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装fast_align</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境配置"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">环境配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用方法-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">注意</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Data-clean-for-Machine-Translation-CE"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">数据清洗工具及相关使用方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-20 14:50:09" datetime="2018-03-20T06:50:09.000Z"  itemprop="datePublished">2018-03-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/NLP/">NLP</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近跟着老师参加了CWMT评测任务，稍微整理下目前用到的数据清洗相关的工具及使用方法。本人目前操作全在Ubuntu16.04下进行。</p>
+<h1 id="中文分词工具ansj"><a href="#中文分词工具ansj" class="headerlink" title="中文分词工具ansj"></a>中文分词工具ansj</h1><h2 id="安装ansj"><a href="#安装ansj" class="headerlink" title="安装ansj"></a>安装ansj</h2><p><a href="https://github.com/NLPchina/ansj_seg" target="_blank" rel="noopener">Ansj的Github地址</a></p>
+<p>首先需要下载两个jar包<a href="https://oss.sonatype.org/content/repositories/releases/org/ansj/ansj_seg/" target="_blank" rel="noopener"><code>ansj_seg</code></a>和<a href="https://oss.sonatype.org/content/repositories/releases/org/nlpcn/nlp-lang/" target="_blank" rel="noopener"><code>nlp-lang</code></a>。一般来说都下载最新的jar包都不会有问题，只用下文件夹内名字最短的哪个jar包就可以了。如果需要用老版的<code>ansj_seg</code>的话，要去jar包中的<code>.pom</code>文件中看下对应<code>nlp-lang</code>的jar包，然后下载。</p>
+<p>下载完了后在IDE中将jar包引入即可。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>目前我使用的分词方式时精准分词，函数为<code>ToAnalysis.parse()</code>。其余方法请移步<a href="https://github.com/NLPchina/ansj_seg/wiki/%E5%88%86%E8%AF%8D%E6%96%B9%E5%BC%8F" target="_blank" rel="noopener">Ansj的wiki</a>查看。<br>分词后的输出是带有词性的，使用<code>toStringWithOutNature</code>函数可以去掉词性。</p>
+<p>核心代码样例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Result parse = ToAnalysis.parse( tmpString );</span><br><span class="line">String resultStr = parse.toStringWithOutNature( <span class="string">" "</span> );</span><br></pre></td></tr></table></figure></p>
+<h1 id="英文分词工具tokenizer-perl"><a href="#英文分词工具tokenizer-perl" class="headerlink" title="英文分词工具tokenizer.perl"></a>英文分词工具tokenizer.perl</h1><p><code>tokenizer.perl</code>是统计机器翻译系统moses的一个小工具，可以用来对英文德文等进行分词。</p>
+<h2 id="安装tokenizer-perl"><a href="#安装tokenizer-perl" class="headerlink" title="安装tokenizer.perl"></a>安装tokenizer.perl</h2><p>因为该脚本并不是独立运行的，其需要moses自带的一些词库。moses整体不大，建议整体都下载下来。从<a href="https://github.com/moses-smt/mosesdecoder" target="_blank" rel="noopener">moses的Github</a>下载即可。该工具位置在<code>[mosesdecoder dir]/scirpts/tokenizer/</code>目录下。</p>
+<h2 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h2><p>建议将待分词文件放在上述文件夹下进行分词操作。输入如下命令进行分词：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ perl tokenizer.perl -l en &lt; [untokenized file] &gt; [tokenized file]</span><br></pre></td></tr></table></figure></p>
+<p>其中：</p>
+<ol>
+<li><code>-l</code>是语言选择，这里选择<code>en</code>即英文。</li>
+<li><code>&lt;</code>代表输入，<code>[untokenized file]</code>是待分词文件</li>
+<li><code>&gt;</code>代表输出，<code>[tokenized file]</code>是分词后的输出文件，如果这个文件不存在则会创建同名文件。 </li>
+</ol>
+<p>其他用法可以输入下述命令查看：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ perl tokenizer.perl -h</span><br></pre></td></tr></table></figure></p>
+<h1 id="词对齐工具fast-align"><a href="#词对齐工具fast-align" class="headerlink" title="词对齐工具fast_align"></a>词对齐工具fast_align</h1><h2 id="安装fast-align"><a href="#安装fast-align" class="headerlink" title="安装fast_align"></a>安装fast_align</h2><p>安装过程翻译自<a href="https://github.com/clab/fast_align" target="_blank" rel="noopener">fast_align的Github</a></p>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><p>在Ubuntu系统上输入以下命令配置环境，其他系统请自行搜索相对应的安装包：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install libgoogle-perftools-dev libsparsehash-dev</span><br></pre></td></tr></table></figure></p>
+<p>如果系统中没有安装<code>cmake</code>请输入以下命令进行安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install cmake</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>进入<code>fast_align</code>文件夹，顺序执行下述命令进行安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure></p>
+<p>上述命令中<code>..</code>表示的是上一层文件夹，即<code>fast_align</code>文件夹。<br>安装完成后出现<code>fast_align</code>和<code>atool</code>两个文件即表示成功安装。</p>
+<h2 id="使用方法-2"><a href="#使用方法-2" class="headerlink" title="使用方法"></a>使用方法</h2><p>如果平行预料库源语言和目标语言文件是分开的，则需要手动将其合并成一个文件，格式为：[源语言句子] ||| [目标语言句子]。注意，在”|||”前后是有空格分开的。</p>
+<p>样例Python程序：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python</span></span><br><span class="line"><span class="comment"># -*- encoding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">( src, trg, out )</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open( src ) <span class="keyword">as</span> fs, <span class="keyword">with</span> open( trg ) <span class="keyword">as</span> ft, <span class="keyword">with</span> open( out ) <span class="keyword">as</span> fo:</span><br><span class="line">        <span class="keyword">for</span> lines, linef <span class="keyword">in</span> zip( fs, ft ):</span><br><span class="line">            fo.write( lines.strip() + <span class="string">" ||| "</span> + linef.strip() )</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len( sys.argv ) != <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"USAGE: ./python merge.py [src file] [trg file] [out file]"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        merge( sys.argv[<span class="number">1</span>], sys.argv[<span class="number">2</span>], sys.argv[<span class="number">3</span>] )</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<p>在<code>build</code>文件夹下执行下述命令进行正向词对齐：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./fast_align -i [filename] -d -o -v &gt; [align_forward_filename]</span><br></pre></td></tr></table></figure></p>
+<p>然后在<code>build</code>文件夹下执行下述命令进行反向词对齐：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./fast_align -i [filename] -d -o -v -r &gt; [align_reverse_filename]</span><br></pre></td></tr></table></figure></p>
+<p>最后在<code>build</code>文件夹下执行下述命令进行双向词对齐获得最终词对齐文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./atool -i [align_forward_filename] -j [align_reverse_filename] -c grow-diag-final-and &gt; [align_file_name]</span><br></pre></td></tr></table></figure></p>
+<p>生成文件格式为<code>i-j</code>的格式，<code>i</code>代表<code>-i</code>文件中该行第<code>i</code>个词，<code>j</code>代表<code>-j</code>文件中该行第<code>j</code>个词。得到最终结果后，中间结果可以删除掉。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>fast_align本身线程不安全，尽量不要一次执行多个fast_align程序。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-03-20T09:42:40.203Z" itemprop="dateUpdated">2018-03-20 17:42:40</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://lrscy.github.io">
+            <img src="../../../../img/avatar.jpg" alt="Meow">
+            Meow
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/NMT/">NMT</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/&title=《数据清洗工具及相关使用方法》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/&title=《数据清洗工具及相关使用方法》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据清洗工具及相关使用方法》 — Meow&url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../../02/11/Cocos2dx-3-16-Y-axis-Flip/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Cocos2d-x v3.16 Y轴翻转</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'true' == 'true',
+            appId: "flgn5yN4nyhhyKPBimaT89Q8-gzGzoHsz",
+            appKey: "4yw3zmlMB7KjyFIzwIlYUnKz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        UV：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        PV：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Meow &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/&title=《数据清洗工具及相关使用方法》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/&title=《数据清洗工具及相关使用方法》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据清洗工具及相关使用方法》 — Meow&url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2018/03/20/Data-clean-for-Machine-Translation-CE/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3aMW7EMAwEwPv/p5MmRYDkfLuiZLgYVwFs6zQKIMokX6/4+hpfv8f5O/K7u++e3Hzh4eHhbZ16y3v3/NpiXS9E8hYeHh7eOd71Rpxsysm0krcm88HDw8N7Ju86DFxTW1h+NMfDw8N7Mi//3k8m3S4rHh4e3nN4kykmQSJ/K2dvzrXg4eHhxby8ivScv4/U9/Dw8PAONAS0yYi1RO28CPfzFh4eHt4B3lpxKzl258+0O3z9JB4eHt5WXt4Ulad9802/La3lZTY8PDy807y8qD+JP8lS5sW2KLTg4eHhHeO1h+O2LWCSYkj+GR++FfDw8PBu5CXb+qS0nwebloqHh4d3Jy8ZqA0Mu9IW9SLi4eHhHePNm67WSJPmgyixgoeHh3eAt5ZEWEtJTA7iGxoL8PDw8DbxkqPtWllrrZyWL1M0Ah4eHt5hXl4Mixqe4raAtQasoukKDw8P7zCvLTvlieC2NSFnREdqPDw8vE28PCkwOeDOUxIbkHh4eHjHeG2hqy3zt+naPGjVKV08PDy8Tbw2hVqnVsuR2xQwHh4e3p28fIrtFn9NXRunbrrCw8PD28Sbb8T5D6+VwfK7eHh4ePfw8tTq2t1JYrdtUHi1Fx4eHt6A1waGtbaqtkUgv/vhOI6Hh4d3jNemDOZJjbVfr2MdHh4e3jHeZIptgmOSwI2CAR4eHt6NvHkj1LyBoK7aXY+Jh4eHt5W39nk/aZZq/86X/p+7eHh4eAd4o3gyaCDID8TtoixeeHh4eEu19UkwSCY3T0zkgQEPDw/vHl67KU8OuxsiVbCIeHh4eM/h5T/WJg7mbQQbAgMeHh7eAd6uBGub9q2bBvDw8PAO8/JEQDJCu9GvtSZEaRE8PDy8A7zJB3+S6j2RwjhS38PDw8P7zPsGU/7QdXXc3rsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Where are you!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)Hi! Welcome Back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

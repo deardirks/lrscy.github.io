@@ -39,7 +39,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Meow">
 <meta property="og:description" content="前言由于之前忘记备份Hexo博客的markdown文件，在重做系统时候还忘记备份博客了，导致现在不得不重新从网页上扒下来之前的文章重新写一遍，十分耗费精力。因此在网上找了下如何备份Hexo博客，在此记录下。 目前假设Git和Github环境已经配置好了，如果没有配置好详见「Ubuntu16.04下Github配置」。Git相关操作请参考廖雪峰的Git教程。 备份博客目前假设本地Hexo博客已经初始">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-03T04:25:38.939Z">
+<meta property="og:updated_time" content="2018-05-30T15:05:59.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Github上备份Hexo博客">
 <meta name="twitter:description" content="前言由于之前忘记备份Hexo博客的markdown文件，在重做系统时候还忘记备份博客了，导致现在不得不重新从网页上扒下来之前的文章重新写一遍，十分耗费精力。因此在网上找了下如何备份Hexo博客，在此记录下。 目前假设Git和Github环境已经配置好了，如果没有配置好详见「Ubuntu16.04下Github配置」。Git相关操作请参考廖雪峰的Git教程。 备份博客目前假设本地Hexo博客已经初始">
@@ -218,7 +218,7 @@ ga('send', 'pageview');
 <h2 id="个人备份习惯"><a href="#个人备份习惯" class="headerlink" title="个人备份习惯"></a>个人备份习惯</h2><p>个人而言习惯于先备份文件再生成博客。即先执行<code>git add .</code>,<code>git commit -m &quot;Backup&quot;</code>,<code>git push origin hexo</code>将博客备份完成，然后执行<code>hexo g -d</code>发布博客。</p>
 <h1 id="恢复博客"><a href="#恢复博客" class="headerlink" title="恢复博客"></a>恢复博客</h1><p>目前假设本地Hexo博客基础环境已经搭好，如果没有配置好Hexo博客基础环境详见「<a href="/2017/11/10/Ubuntu-Github-io-config-Hexo#基础环境搭建">Ubuntu16.04下从零起步搭建配置github.io博客————Hexo</a>」。</p>
 <h2 id="克隆项目到本地"><a href="#克隆项目到本地" class="headerlink" title="克隆项目到本地"></a>克隆项目到本地</h2><p>输入下列命令克隆博客必须文件(<code>hexo</code>分支)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/yourgithubname/yourgithubname.github.io</span><br></pre></td></tr></table></figure></p>
-<h2 id="恢复博客-1"><a href="#恢复博客-1" class="headerlink" title="恢复博客"></a>恢复博客</h2><p>在克隆的那个文件夹下输入如下命令恢复博客：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<h2 id="恢复博客-1"><a href="#恢复博客-1" class="headerlink" title="恢复博客"></a>恢复博客</h2><p>在克隆的那个文件夹下输入如下命令恢复博客：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
 <p>在此不需要执行<code>hexo init</code>这条指令，因为不是从零搭建起新博客。</p>
 <p>完成喵～</p>
 
@@ -229,7 +229,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-02-03T04:25:38.939Z" itemprop="dateUpdated">2018-02-03 12:25:38</time>
+    Last updated: <time datetime="2018-05-30T15:05:59.917Z" itemprop="dateUpdated">2018-05-30 23:05:59</time>
 </span><br>
 
 

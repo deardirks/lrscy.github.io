@@ -50,7 +50,13 @@ ga('send', 'pageview');
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Input_X.png">
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Output_y.png">
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png">
-<meta property="og:updated_time" content="2018-10-23T07:08:15.441Z">
+<meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Neural_Network.png">
+<meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Computation_Graph.png">
+<meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Computing_Derivatives.png">
+<meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png">
+<meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Forward_Propagation_NN.png">
+<meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Backward_Propagation_NN.png">
+<meta property="og:updated_time" content="2018-10-29T22:18:55.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Learning Notes - Neural Network and Deep Learning">
 <meta name="twitter:description" content="This is a note of the first course of the “Deep Learning Specialization” at Coursera. The course is taught by Andrew Ng. Almost all materials in this note come from courses’ videos. The note combines">
@@ -167,7 +173,7 @@ ga('send', 'pageview');
         <h1 class="title">Deep Learning Notes - Neural Network and Deep Learning</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-10-22T04:32:25.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2018-10-22T16:32:25.000Z" itemprop="datePublished" class="page-time">
   2018-10-22
 </time>
 
@@ -189,7 +195,7 @@ ga('send', 'pageview');
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Brief-Intro-to-Deep-Learning"><span class="post-toc-number">1.</span> <span class="post-toc-text">Brief Intro to Deep Learning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stuctures-of-Deep-Learning"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Stuctures of Deep Learning</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Data"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Data</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Advantages"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Advantages</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Symbols-of-the-Course"><span class="post-toc-number">2.</span> <span class="post-toc-text">Basic Symbols of the Course</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basics-of-Neural-Network-Logistic-Regression"><span class="post-toc-number">3.</span> <span class="post-toc-text">Basics of Neural Network (Logistic Regression)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Basic-equations"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Basic equations</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cost-function"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Cost function</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Brief-Intro-to-Deep-Learning"><span class="post-toc-number">1.</span> <span class="post-toc-text">Brief Intro to Deep Learning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stuctures-of-Deep-Learning"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Stuctures of Deep Learning</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Data"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Data</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Advantages"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Advantages</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Symbols-of-the-Course"><span class="post-toc-number">2.</span> <span class="post-toc-text">Basic Symbols of the Course</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Neural-Network"><span class="post-toc-number">3.</span> <span class="post-toc-text">Neural Network</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Logistic-Regression-and-Neural-Network"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Logistic Regression and Neural Network</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Computation-Graph"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Computation Graph</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Forward-Propagation"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Forward Propagation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Computation-on-single-neuron"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">Computation on single neuron</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#The-whole-process-on-Neural-Network"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">The whole process on Neural Network</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cost-function"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">Cost function</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Backward-Propagation"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Backward Propagation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activation-Functions"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Activation Functions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Parameters-and-Hyperparameters"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">Parameters and Hyperparameters</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Comparation-of-shallow-and-deep-neural-network"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">Comparation of shallow and deep neural network</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -199,7 +205,7 @@ ga('send', 'pageview');
     <div class="post-card">
         <h1 class="post-card-title">Deep Learning Notes - Neural Network and Deep Learning</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-10-22 12:32:25" datetime="2018-10-22T04:32:25.000Z" itemprop="datePublished">2018-10-22</time>
+            <time class="post-time" title="2018-10-22 12:32:25" datetime="2018-10-22T16:32:25.000Z" itemprop="datePublished">2018-10-22</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/Deep-Learning/">Deep Learning</a></li></ul>
@@ -215,7 +221,13 @@ ga('send', 'pageview');
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>This is a note of the first course of the “Deep Learning Specialization” at <a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera</a>. The course is taught by Andrew Ng.</p>
-<p>Almost all materials in this note come from courses’ videos. The note combines knowledge from course and some of my understanding of these konwledge. Thus, it does not strictly follow the order of videos.</p>
+<p>Almost all materials in this note come from courses’ videos. The note combines knowledge from course and some of my understanding of these konwledge. I’ve reorganized the structure of the whole course according to my understanding. Thus, it doesn’t strictly follow the order of videos.</p>
+<p>In this note, I will keep all function, equation vectorized (without for loop) as far as possible.</p>
+<p>If you want to read the notes which strictly follows the course, here are some recommendations:</p>
+<ul>
+<li><a href="https://github.com/mbadry1/DeepLearning.ai-Summary" target="_blank" rel="noopener">mbadry1’s notes on Github</a></li>
+<li><a href="https://github.com/ppant/deeplearning.ai-notes" target="_blank" rel="noopener">ppant’s notes on Github</a></li>
+</ul>
 <p>Some parts of this note are inspired from <a href="https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng" target="_blank" rel="noopener">Tess Ferrandez</a>.</p>
 <h1 id="Brief-Intro-to-Deep-Learning"><a href="#Brief-Intro-to-Deep-Learning" class="headerlink" title="Brief Intro to Deep Learning"></a>Brief Intro to Deep Learning</h1><p>To begin with, let’s focus on some basic concepts to gain some intuition of deep learning.</p>
 <h2 id="Stuctures-of-Deep-Learning"><a href="#Stuctures-of-Deep-Learning" class="headerlink" title="Stuctures of Deep Learning"></a>Stuctures of Deep Learning</h2><p>We start with supervised learning. Here are several types of neural network (NN) in the folloing chart:</p>
@@ -261,44 +273,71 @@ ga('send', 'pageview');
 </tbody>
 </table>
 <p>Here are some pictures of Standard NN, Convolutional NN, Recurrent NN: </p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Standard_NN.png" height="70%" width="70%"><br>  <div class="image-caption">Standard NN</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Convolutional_NN.png" height="70%" width="70%"><br>  <div class="image-caption">Convolutional NN</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Recurrent_NN.png" height="70%" width="70%"><br>  <div class="image-caption">Recurrent NN</div><br></div>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Standard_NN.png" height="70%" width="70%"><br>  <div class="image-caption">Standard NN</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Convolutional_NN.png" height="70%" width="70%"><br>  <div class="image-caption">Convolutional NN</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Recurrent_NN.png" height="70%" width="70%"><br>  <div class="image-caption">Recurrent NN</div><br></div>
 
 <h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p>Neural Nework can deal with both stuctured data and unstructured data. The following will give you an intuition of both kinds of data.</p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Structured_and_Unstructured_Data.png" height="50%" width="50%"><br>  <div class="image-caption">Structured and Unstructured Data</div><br></div>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Structured_and_Unstructured_Data.png" height="50%" width="50%"><br>  <div class="image-caption">Structured and Unstructured Data</div><br></div>
 
 <h2 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h2><p>Here are some conclusions of why deep learning is advanced comparing to traditional machine learning.</p>
 <p>Firstly, deep learning models performs better when dealing with big data. Here is a comparation of deep learning models and classic machine learing models:</p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Comparation_between_deep_learning_and_machine_learning.png"><br>  <div class="image-caption">Comparation between deep learning and machine learning</div><br></div>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Comparation_between_deep_learning_and_machine_learning.png"><br>  <div class="image-caption">Comparation between deep learning and machine learning</div><br></div>
 
 <p>Secondly, thanks to the booming development of hardware and advanced algorithm, computing is much faster than before. Thus, we can implement our idea and know whether it works or not in short time. As a result, we can run the following circle much faster than we image.</p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Iteration_process.png" height="50%" width="50%"><br>  <div class="image-caption">Iteration process</div><br></div>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Iteration_process.png" height="50%" width="50%"><br>  <div class="image-caption">Iteration process</div><br></div>
 
 <h1 id="Basic-Symbols-of-the-Course"><a href="#Basic-Symbols-of-the-Course" class="headerlink" title="Basic Symbols of the Course"></a>Basic Symbols of the Course</h1><p>These basic symbols will be used through out the whole specialization.</p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Standard_notations.png"><br>  <div class="image-caption">Standard notations</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Standard_representations.png"><br>  <div class="image-caption">Standard representation</div><br></div>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Standard_notations.png"><br>  <div class="image-caption">Standard notations</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Standard_representations.png"><br>  <div class="image-caption">Standard representation</div><br></div>
 
 <p>Moreover, in this course, each input x will be stacked into columns and form the input matrix X.</p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Input_X.png" width="50%" height="50%"><br>  <div class="image-caption">Input X</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Output_y.png" width="50%" height="50%"><br>  <div class="image-caption">Output y</div><br></div>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Input_X.png" width="50%" height="50%"><br>  <div class="image-caption">Input X</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Output_y.png" width="50%" height="50%"><br>  <div class="image-caption">Output y</div><br></div>
 
-<h1 id="Basics-of-Neural-Network-Logistic-Regression"><a href="#Basics-of-Neural-Network-Logistic-Regression" class="headerlink" title="Basics of Neural Network (Logistic Regression)"></a>Basics of Neural Network (Logistic Regression)</h1><h2 id="Basic-equations"><a href="#Basic-equations" class="headerlink" title="Basic equations"></a>Basic equations</h2><p>In this part, we will take binary classification problem as an example.</p>
-<p>Logistic regression is basically the combination of linear regression and logistic function, such as sigmoid.</p>
-<p>The linear regression equation is: $$ z = w^Tx+b $$<br>The sigmoid function equation is:  $$ a = sigmoid( z ) $$<br>The combination euquation is:      $$ \hat{y} = a = sigmoid( w^Tx + b ) $$</p>
-<p>The visualization of this process is the folloing:</p>
-<div align="center"><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png"><br>  <div class="image-caption">Logistic Regression</div><br></div>
+<h1 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h1><p>Reviewing the whole course, there are several common concepts between logistic regression and neural network (including both shallow and deep neural network). Thus, I draw conclusions on each concept and then apply them to both logistic regression and neural network.</p>
+<h2 id="Logistic-Regression-and-Neural-Network"><a href="#Logistic-Regression-and-Neural-Network" class="headerlink" title="Logistic Regression and Neural Network"></a>Logistic Regression and Neural Network</h2><p>First of all, here are pictures of logistic regression and neural network.</p>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png" width="60%" height="60%"><br>  <div class="image-caption">Logistic Regression</div><br>  <img src="/2018/10/22/DeepLearningNotes-NNandDL/Neural_Network.png" width="60%" height="60%"><br>  <div class="image-caption">Neural Network</div><br></div>
 
-<p>Here, x only contains one example in one column, w contains a set of parameters, b has the same shape as w.</p>
-<p>Logistic regression is also a neural network without hidden layer, which is also called mini neural network. It has one input layer, X, and one output layer, a or $ \hat{y} $.</p>
-<h2 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h2><p>Here is a definition of loss function and cost function. Loss function computes a single training example while cost function is the average of the loss function of the whole training set.</p>
-<p>In traditional machine learning, we use square root error as loss function, which is $ L = \frac{1}{2}( \hat{y} - y )^2 $. But in this case, we don’t use it since problems we try to solve are not convex, which isn’t the same as the square root error function.</p>
+<p>As we can see, logistic regression is also a kind of neural network, which has input layer and output layer and does not have hidden layers, so that it is also called mini neural network. In the following sections, I will write “neural network” to represent logistic regression and neural network and use pictures similar to the second one to represent neural network.</p>
+<h2 id="Computation-Graph"><a href="#Computation-Graph" class="headerlink" title="Computation Graph"></a>Computation Graph</h2><p>Computation graph is one of basic concepts in deep learning. By analyzing it, we could understand the whole process of computation process of neural network. The following is the basic computation graph:</p>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Computation_Graph.png" width="80%" height="80%"></div>
+
+<p>In this picture, we can easily understand how $J(a,b,c)=3(a+bc)$ is computed. This process is similar to “Forward Propagation” process which I will say in next section. Moreover, in neural network, $J$ is called cost function. After computing cost function $J$, we need to feed it back to all of our parameters, such as $a$, $b$, $c$ in the picture. This process is called computing derivatives.</p>
+<div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Computing_Derivatives.png" width="80%" height="80%"></div>
+
+<p>By analyzing the comutation graph, we can easily compute all deviatives. According to chain rule, we can compute $\frac{dJ}{da}$ by $\frac{dJ}{dv}\frac{dv}{da}$. So do parameter $b$ and $c$. The whole derivation process is similar to “backward propagation” process in neural network.</p>
+<h2 id="Forward-Propagation"><a href="#Forward-Propagation" class="headerlink" title="Forward Propagation"></a>Forward Propagation</h2><h3 id="Computation-on-single-neuron"><a href="#Computation-on-single-neuron" class="headerlink" title="Computation on single neuron"></a>Computation on single neuron</h3><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png" width="60%" height="60%"><br>  <div class="image-caption">Computation on single neuron</div><br></div>
+
+<p>For every single neuron, the computing process is the same as the logistic regression. Logistic regression is basically the combination of linear regression and logistic function such as sigmoid. It has one input layer, x, and one output layer, a or $ \hat{y} $.</p>
+<p>The linear regression equation is:&ensp;$ z = w^Tx+b $<br>The sigmoid function equation is:&ensp;$ a = sigmoid( z ) $<br>The combination euquation is:&emsp;&ensp;&nbsp;$ \hat{y} = a = sigmoid( w^Tx + b ) $</p>
+<h3 id="The-whole-process-on-Neural-Network"><a href="#The-whole-process-on-Neural-Network" class="headerlink" title="The whole process on Neural Network"></a>The whole process on Neural Network</h3><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Forward_Propagation_NN.png" width="90%" height="90%"><br>  <div class="image-caption">Forward Propagation</div><br></div>
+
+<p>This is an example of neural network. Since it only has one hidden layer, it’s also called shallow neural network.</p>
+<p>The whole process when computing the 1<sup>st</sup> layer (hidden layer) is as the following:</p>
+<p>\begin{align}<br>Z^{[1]} &amp; = W^TX + b \\<br>A^{[1]} &amp; = sigmoid( Z^{[1]} )<br>\end{align}</p>
+<p>In these equations</p>
+<ul>
+<li>$W^T$ is a 4x3 matrix. It is also written as $W^{[1]}$. Its shape is always (# of neurons in this layer)x(# of neurons in previous layer).</li>
+<li>$X$ is a 3x1 matrix. Sometimes it is also called $A^{[0]}$.</li>
+<li>$b$ is a 4x1 matrix. Its shape is always (# of neurous in this layer)x1.</li>
+<li>$A^{[1]}$ is a 4x1 matrix. Its shape is always (# of neurous in this layer)x1.</li>
+<li>sigmoid is an element-wise function.</li>
+</ul>
+<p>For each layer, it just repeats what previous layers do until the last layer (output layer).</p>
+<h3 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h3><p>Here is a definition of loss function and cost function.</p>
+<ul>
+<li>Loss function computes a single training example.</li>
+<li>Cost function is the average of the loss function of the whole training set.</li>
+</ul>
+<p>In traditional machine learning, we use square root error as loss function, which is $ L = \frac{1}{2}( \hat{y} - y )^2 $. But in this case, we don’t use it since most problems we try to solve are not convex.</p>
 <p>Here is the loss function we use:</p>
-<p>$$<br>L( \hat{y}, y ) = -( ylog(\hat{y}) + ( 1 - y )log( 1 - \hat{y} ) )<br>$$</p>
+<p>$$<br>L( \hat{y}, y ) = -( y \cdot log(\hat{y}) + ( 1 - y ) \cdot log( 1 - \hat{y} ) )<br>$$</p>
 <p>For this loss function:</p>
 <ul>
-<li>if y == 1, then $ L = -ylog(\hat{y}) $ and it will close to 0 when $ \hat{y} $ near 1.</li>
-<li>if y == 0, then $ L = -( 1 - y )log( 1 - \hat{y} ) $ and it will close to 0 when $ \hat{y} $ near 0.</li>
+<li>if y == 1, then $ L = -y \cdot log(\hat{y}) $ and it will close to 0 when $ \hat{y} $ near 1.</li>
+<li>if y == 0, then $ L = -( 1 - y ) \cdot log( 1 - \hat{y} ) $ and it will close to 0 when $ \hat{y} $ near 0.</li>
 </ul>
 <p>Then the cost function is: $$ J( w, b ) = \frac{1}{m}\sum_{i=1}^{m} L( \hat{y}, y ) $$</p>
-<p>To be continue…</p>
+<h2 id="Backward-Propagation"><a href="#Backward-Propagation" class="headerlink" title="Backward Propagation"></a>Backward Propagation</h2><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Backward_Propagation_NN.png" width="90%" height="90%"><br>  <div class="image-caption">Backward Propagation</div><br></div>
 
+<h2 id="Activation-Functions"><a href="#Activation-Functions" class="headerlink" title="Activation Functions"></a>Activation Functions</h2><h2 id="Parameters-and-Hyperparameters"><a href="#Parameters-and-Hyperparameters" class="headerlink" title="Parameters and Hyperparameters"></a>Parameters and Hyperparameters</h2><h2 id="Comparation-of-shallow-and-deep-neural-network"><a href="#Comparation-of-shallow-and-deep-neural-network" class="headerlink" title="Comparation of shallow and deep neural network"></a>Comparation of shallow and deep neural network</h2>
         </div>
 
         <blockquote class="post-copyright">
@@ -306,7 +345,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-10-23T07:08:15.441Z" itemprop="dateUpdated">2018-10-23 15:08:15</time>
+    Last updated: <time datetime="2018-10-29T22:18:55.551Z" itemprop="dateUpdated">2018-10-29 18:18:55</time>
 </span><br>
 
 

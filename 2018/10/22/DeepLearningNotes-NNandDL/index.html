@@ -56,7 +56,7 @@ ga('send', 'pageview');
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png">
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Forward_Propagation_NN.png">
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Backward_Propagation_NN.png">
-<meta property="og:updated_time" content="2018-10-30T03:06:58.083Z">
+<meta property="og:updated_time" content="2018-10-30T03:14:55.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DeepLearning.ai Note - Neural Network and Deep Learning">
 <meta name="twitter:description" content="This is a note of the first course of the “Deep Learning Specialization” at Coursera. The course is taught by Andrew Ng. Almost all materials in this note come from courses’ videos. The note combines">
@@ -314,10 +314,10 @@ ga('send', 'pageview');
 <p>\begin{align}<br>Z^{[1]} &amp; = W^{[1]T}X + b^{[1]} \\<br>A^{[1]} &amp; = \sigma( Z^{[1]} )<br>\end{align}</p>
 <p>In these equations:</p>
 <ul>
-<li>$W^{[1]T}$ is a $4 \times 3$ matrix. It is also written as $W^{[1]}$. Its shape is always (# of neurons in this layer)$\times$(# of neurons in previous layer).</li>
+<li>$W^{[1]T}$ is a $4 \times 3$ matrix. It is also written as $W^{[1]}$. Its shape is always $n^{[l]} \times n^{[l - 1]}$.</li>
 <li>$X$ is a $3 \times m$ matrix. Sometimes it is also called $A^{[0]}$.</li>
-<li>$b^{[1]}$ is a $4 \times m$ matrix. Its shape is always (# of neurons in this layer)$\times m$.</li>
-<li>$A^{[1]}$ is a $4 \times m$ matrix. Its shape is always (# of neurons in this layer)$\times m$.</li>
+<li>$b^{[1]}$ is a $4 \times m$ matrix. Its shape is always $n^{[l]} \times m$.</li>
+<li>$A^{[1]}$ is a $4 \times m$ matrix. Its shape is always $n^{[l]} \times m$.</li>
 <li>$\sigma$ is an element-wise function. It is called activation function.</li>
 </ul>
 <p>For each layer, it just repeats what previous layers do until the last layer (output layer).</p>
@@ -359,7 +359,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-10-30T03:06:58.083Z" itemprop="dateUpdated">2018-10-29 23:06:58</time>
+    Last updated: <time datetime="2018-10-30T03:14:55.307Z" itemprop="dateUpdated">2018-10-29 23:14:55</time>
 </span><br>
 
 

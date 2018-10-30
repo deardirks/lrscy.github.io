@@ -24,7 +24,7 @@ ga('send', 'pageview');
     
     
     
-    <title>Deep Learning Notes - Neural Network and Deep Learning | Meow</title>
+    <title>DeepLearning.ai Note - Neural Network and Deep Learning | Meow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -34,7 +34,7 @@ ga('send', 'pageview');
     <meta name="description" content="This is a note of the first course of the “Deep Learning Specialization” at Coursera. The course is taught by Andrew Ng. Almost all materials in this note come from courses’ videos. The note combines">
 <meta name="keywords" content="Deep Learning,Coursera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deep Learning Notes - Neural Network and Deep Learning">
+<meta property="og:title" content="DeepLearning.ai Note - Neural Network and Deep Learning">
 <meta property="og:url" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/index.html">
 <meta property="og:site_name" content="Meow">
 <meta property="og:description" content="This is a note of the first course of the “Deep Learning Specialization” at Coursera. The course is taught by Andrew Ng. Almost all materials in this note come from courses’ videos. The note combines">
@@ -56,9 +56,9 @@ ga('send', 'pageview');
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png">
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Forward_Propagation_NN.png">
 <meta property="og:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Backward_Propagation_NN.png">
-<meta property="og:updated_time" content="2018-10-29T22:18:55.551Z">
+<meta property="og:updated_time" content="2018-10-30T03:06:58.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep Learning Notes - Neural Network and Deep Learning">
+<meta name="twitter:title" content="DeepLearning.ai Note - Neural Network and Deep Learning">
 <meta name="twitter:description" content="This is a note of the first course of the “Deep Learning Specialization” at Coursera. The course is taught by Andrew Ng. Almost all materials in this note come from courses’ videos. The note combines">
 <meta name="twitter:image" content="https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/Standard_NN.png">
     
@@ -148,7 +148,7 @@ ga('send', 'pageview');
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Deep Learning Notes - Neural Network and Deep Learning</div>
+        <div class="flex-col header-title ellipsis">DeepLearning.ai Note - Neural Network and Deep Learning</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -170,7 +170,7 @@ ga('send', 'pageview');
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Deep Learning Notes - Neural Network and Deep Learning</h1>
+        <h1 class="title">DeepLearning.ai Note - Neural Network and Deep Learning</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-10-22T16:32:25.000Z" itemprop="datePublished" class="page-time">
@@ -195,7 +195,7 @@ ga('send', 'pageview');
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Brief-Intro-to-Deep-Learning"><span class="post-toc-number">1.</span> <span class="post-toc-text">Brief Intro to Deep Learning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stuctures-of-Deep-Learning"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Stuctures of Deep Learning</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Data"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Data</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Advantages"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Advantages</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Symbols-of-the-Course"><span class="post-toc-number">2.</span> <span class="post-toc-text">Basic Symbols of the Course</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Neural-Network"><span class="post-toc-number">3.</span> <span class="post-toc-text">Neural Network</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Logistic-Regression-and-Neural-Network"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Logistic Regression and Neural Network</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Computation-Graph"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Computation Graph</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Forward-Propagation"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Forward Propagation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Computation-on-single-neuron"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">Computation on single neuron</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#The-whole-process-on-Neural-Network"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">The whole process on Neural Network</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cost-function"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">Cost function</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Backward-Propagation"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Backward Propagation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activation-Functions"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Activation Functions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Parameters-and-Hyperparameters"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">Parameters and Hyperparameters</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Comparation-of-shallow-and-deep-neural-network"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">Comparation of shallow and deep neural network</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Brief-Intro-to-Deep-Learning"><span class="post-toc-number">1.</span> <span class="post-toc-text">Brief Intro to Deep Learning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Stuctures-of-Deep-Learning"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Stuctures of Deep Learning</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Data"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Data</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Advantages"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Advantages</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Symbols-of-the-Course"><span class="post-toc-number">2.</span> <span class="post-toc-text">Basic Symbols of the Course</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Neural-Network"><span class="post-toc-number">3.</span> <span class="post-toc-text">Neural Network</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Logistic-Regression-and-Neural-Network"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Logistic Regression and Neural Network</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Computation-Graph"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Computation Graph</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Forward-Propagation"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Forward Propagation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Computation-on-single-neuron"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">Computation on single neuron</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#The-whole-process-on-Neural-Network"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">The whole process on Neural Network</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cost-function"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">Cost function</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Backward-Propagation"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Backward Propagation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Compute-Gradients"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">Compute Gradients</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Update-parameters"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">Update parameters</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activation-Functions"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Activation Functions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Parameters-and-Hyperparameters"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">Parameters and Hyperparameters</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Comparation-of-shallow-and-deep-neural-network"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">Comparation of shallow and deep neural network</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -203,7 +203,7 @@ ga('send', 'pageview');
 <article id="post-DeepLearningNotes-NNandDL" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Deep Learning Notes - Neural Network and Deep Learning</h1>
+        <h1 class="post-card-title">DeepLearning.ai Note - Neural Network and Deep Learning</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-10-22 12:32:25" datetime="2018-10-22T16:32:25.000Z" itemprop="datePublished">2018-10-22</time>
 
@@ -222,7 +222,7 @@ ga('send', 'pageview');
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>This is a note of the first course of the “Deep Learning Specialization” at <a href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener">Coursera</a>. The course is taught by Andrew Ng.</p>
 <p>Almost all materials in this note come from courses’ videos. The note combines knowledge from course and some of my understanding of these konwledge. I’ve reorganized the structure of the whole course according to my understanding. Thus, it doesn’t strictly follow the order of videos.</p>
-<p>In this note, I will keep all function, equation vectorized (without for loop) as far as possible.</p>
+<p>In this note, I will keep all functions and equations vectorized (without for loop) as far as possible.</p>
 <p>If you want to read the notes which strictly follows the course, here are some recommendations:</p>
 <ul>
 <li><a href="https://github.com/mbadry1/DeepLearning.ai-Summary" target="_blank" rel="noopener">mbadry1’s notes on Github</a></li>
@@ -306,19 +306,19 @@ ga('send', 'pageview');
 <h2 id="Forward-Propagation"><a href="#Forward-Propagation" class="headerlink" title="Forward Propagation"></a>Forward Propagation</h2><h3 id="Computation-on-single-neuron"><a href="#Computation-on-single-neuron" class="headerlink" title="Computation on single neuron"></a>Computation on single neuron</h3><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Logistic_Regression.png" width="60%" height="60%"><br>  <div class="image-caption">Computation on single neuron</div><br></div>
 
 <p>For every single neuron, the computing process is the same as the logistic regression. Logistic regression is basically the combination of linear regression and logistic function such as sigmoid. It has one input layer, x, and one output layer, a or $ \hat{y} $.</p>
-<p>The linear regression equation is:&ensp;$ z = w^Tx+b $<br>The sigmoid function equation is:&ensp;$ a = sigmoid( z ) $<br>The combination euquation is:&emsp;&ensp;&nbsp;$ \hat{y} = a = sigmoid( w^Tx + b ) $</p>
+<p>The linear regression equation is:&ensp;$ z = w^Tx+b $<br>The sigmoid function equation is:&ensp;$ a = \sigma( z ) $<br>The combination euquation is:&emsp;&ensp;&nbsp;$ \hat{y} = a = \sigma( w^Tx + b ) $</p>
 <h3 id="The-whole-process-on-Neural-Network"><a href="#The-whole-process-on-Neural-Network" class="headerlink" title="The whole process on Neural Network"></a>The whole process on Neural Network</h3><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Forward_Propagation_NN.png" width="90%" height="90%"><br>  <div class="image-caption">Forward Propagation</div><br></div>
 
-<p>This is an example of neural network. Since it only has one hidden layer, it’s also called shallow neural network.</p>
+<p>This is an example of neural network. Since it only has one hidden layer, it’s also called shallow neural network. The forward propagation process means that we compute the graph from left to the right in this picture.</p>
 <p>The whole process when computing the 1<sup>st</sup> layer (hidden layer) is as the following:</p>
-<p>\begin{align}<br>Z^{[1]} &amp; = W^TX + b \\<br>A^{[1]} &amp; = sigmoid( Z^{[1]} )<br>\end{align}</p>
-<p>In these equations</p>
+<p>\begin{align}<br>Z^{[1]} &amp; = W^{[1]T}X + b^{[1]} \\<br>A^{[1]} &amp; = \sigma( Z^{[1]} )<br>\end{align}</p>
+<p>In these equations:</p>
 <ul>
-<li>$W^T$ is a 4x3 matrix. It is also written as $W^{[1]}$. Its shape is always (# of neurons in this layer)x(# of neurons in previous layer).</li>
-<li>$X$ is a 3x1 matrix. Sometimes it is also called $A^{[0]}$.</li>
-<li>$b$ is a 4x1 matrix. Its shape is always (# of neurous in this layer)x1.</li>
-<li>$A^{[1]}$ is a 4x1 matrix. Its shape is always (# of neurous in this layer)x1.</li>
-<li>sigmoid is an element-wise function.</li>
+<li>$W^{[1]T}$ is a $4 \times 3$ matrix. It is also written as $W^{[1]}$. Its shape is always (# of neurons in this layer)$\times$(# of neurons in previous layer).</li>
+<li>$X$ is a $3 \times m$ matrix. Sometimes it is also called $A^{[0]}$.</li>
+<li>$b^{[1]}$ is a $4 \times m$ matrix. Its shape is always (# of neurons in this layer)$\times m$.</li>
+<li>$A^{[1]}$ is a $4 \times m$ matrix. Its shape is always (# of neurons in this layer)$\times m$.</li>
+<li>$\sigma$ is an element-wise function. It is called activation function.</li>
 </ul>
 <p>For each layer, it just repeats what previous layers do until the last layer (output layer).</p>
 <h3 id="Cost-function"><a href="#Cost-function" class="headerlink" title="Cost function"></a>Cost function</h3><p>Here is a definition of loss function and cost function.</p>
@@ -335,8 +335,22 @@ ga('send', 'pageview');
 <li>if y == 0, then $ L = -( 1 - y ) \cdot log( 1 - \hat{y} ) $ and it will close to 0 when $ \hat{y} $ near 0.</li>
 </ul>
 <p>Then the cost function is: $$ J( w, b ) = \frac{1}{m}\sum_{i=1}^{m} L( \hat{y}, y ) $$</p>
-<h2 id="Backward-Propagation"><a href="#Backward-Propagation" class="headerlink" title="Backward Propagation"></a>Backward Propagation</h2><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Backward_Propagation_NN.png" width="90%" height="90%"><br>  <div class="image-caption">Backward Propagation</div><br></div>
+<h2 id="Backward-Propagation"><a href="#Backward-Propagation" class="headerlink" title="Backward Propagation"></a>Backward Propagation</h2><p>Here, we use gradient descent as our backward propagation method.</p>
+<h3 id="Compute-Gradients"><a href="#Compute-Gradients" class="headerlink" title="Compute Gradients"></a>Compute Gradients</h3><div align="center"><img src="/2018/10/22/DeepLearningNotes-NNandDL/Backward_Propagation_NN.png" width="90%" height="90%"><br>  <div class="image-caption">Backward Propagation</div><br></div>
 
+<p>As we can see in the picture, it is a simplified computation graph. The neural network is on the right-top, which is almost the same as the neural network we discussing in previous section. Backward Propagation is computing derivatives from the right to the left. By following the backward process, we can get derivatives for all parameters, including $W^{[1]}$, $b^{[1]}$, $W^{[2]}$, $b^{[2]}$.</p>
+<p>Here I give a rough derivation example of computing gradients of parameter $W^{[1]}$.</p>
+<p>\begin{align}<br>\frac{\partial L}{\partial Z^{[1]}} &amp; = W^{[2]T}\frac{\partial L}{\partial Z^{[2]}} \cdot {\sigma}^{[1]\prime}(Z^{[1]}) \\<br>\frac{dL}{dW^{[1]}} &amp; = \frac{\partial L}{\partial Z^{[1]}}\frac{dZ^{[1]}}{dW^{[1]}} \\<br>                    &amp; = \frac{\partial L}{\partial Z^{[1]}}A^{[0]T} \\<br>\frac{dL}{db^{[1]}} &amp; = \frac{\partial L}{\partial Z^{[1]}}\frac{dZ^{[1]}}{db^{[1]}} \\<br>                    &amp; = \frac{\partial L}{\partial Z^{[1]}}<br>\end{align}</p>
+<p>It is similar to compute parameters in other layers. In these equations:</p>
+<ul>
+<li>$\frac{dL}{dW^{[1]}}$ has the same shape as $W^{[1]}$. So do other layers.</li>
+<li>$\frac{dL}{db^{[1]}}$ has the same shape as $b^{[1]}$. So do other layers.</li>
+<li>the $\cdot$ in first line is an element-wise product.</li>
+</ul>
+<h3 id="Update-parameters"><a href="#Update-parameters" class="headerlink" title="Update parameters"></a>Update parameters</h3><p>After computing gradients, we can update our parameters quickly.</p>
+<p>For every parameters (Take layer1 as an example):</p>
+<p>\begin{align}<br>W^{[1]} &amp; = W^{[1]} - \alpha \frac{dL}{dW^{[1]}} \\<br>b^{[1]} &amp; = b^{[1]} - \alpha \frac{dL}{db^{[1]}}<br>\end{align}</p>
+<p>In above equations, $\alpha$ is called learning rate, which we need to determine before training.</p>
 <h2 id="Activation-Functions"><a href="#Activation-Functions" class="headerlink" title="Activation Functions"></a>Activation Functions</h2><h2 id="Parameters-and-Hyperparameters"><a href="#Parameters-and-Hyperparameters" class="headerlink" title="Parameters and Hyperparameters"></a>Parameters and Hyperparameters</h2><h2 id="Comparation-of-shallow-and-deep-neural-network"><a href="#Comparation-of-shallow-and-deep-neural-network" class="headerlink" title="Comparation of shallow and deep neural network"></a>Comparation of shallow and deep neural network</h2>
         </div>
 
@@ -345,7 +359,7 @@ ga('send', 'pageview');
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-10-29T22:18:55.551Z" itemprop="dateUpdated">2018-10-29 18:18:55</time>
+    Last updated: <time datetime="2018-10-30T03:06:58.083Z" itemprop="dateUpdated">2018-10-29 23:06:58</time>
 </span><br>
 
 
@@ -375,7 +389,7 @@ ga('send', 'pageview');
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《Deep Learning Notes - Neural Network and Deep Learning》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《DeepLearning.ai Note - Neural Network and Deep Learning》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -385,7 +399,7 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《Deep Learning Notes - Neural Network and Deep Learning》 — Meow&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《DeepLearning.ai Note - Neural Network and Deep Learning》 — Meow&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -395,7 +409,7 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Deep Learning Notes - Neural Network and Deep Learning》 — Meow&url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&via=https://lrscy.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DeepLearning.ai Note - Neural Network and Deep Learning》 — Meow&url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&via=https://lrscy.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -519,7 +533,7 @@ ga('send', 'pageview');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《Deep Learning Notes - Neural Network and Deep Learning》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《DeepLearning.ai Note - Neural Network and Deep Learning》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -529,7 +543,7 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《Deep Learning Notes - Neural Network and Deep Learning》 — Meow&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&title=《DeepLearning.ai Note - Neural Network and Deep Learning》 — Meow&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -539,7 +553,7 @@ ga('send', 'pageview');
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Deep Learning Notes - Neural Network and Deep Learning》 — Meow&url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&via=https://lrscy.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DeepLearning.ai Note - Neural Network and Deep Learning》 — Meow&url=https://lrscy.github.io/2018/10/22/DeepLearningNotes-NNandDL/&via=https://lrscy.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

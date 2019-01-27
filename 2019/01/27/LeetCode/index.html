@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    
+    
+    
+    <title>LeetCode Solution Summary | Meow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode,Summary">
+    <meta name="description" content="This blog is a summary of my solution of LeetCode problems. I will share several interesting problems in this blog and category. Most of my solutions are on my Github. Most of my algorithm problem sol">
+<meta name="keywords" content="LeetCode,Summary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Solution Summary">
+<meta property="og:url" content="https://lrscy.github.io/2019/01/27/LeetCode/index.html">
+<meta property="og:site_name" content="Meow">
+<meta property="og:description" content="This blog is a summary of my solution of LeetCode problems. I will share several interesting problems in this blog and category. Most of my solutions are on my Github. Most of my algorithm problem sol">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-27T17:14:39.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Solution Summary">
+<meta name="twitter:description" content="This blog is a summary of my solution of LeetCode problems. I will share several interesting problems in this blog and category. Most of my solutions are on my Github. Most of my algorithm problem sol">
+    
+        <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Meow</h5>
+          <a href="mailto:ruosenlee@gmail.com" title="ruosenlee@gmail.com" class="mail">ruosenlee@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html">
+                <i class="icon icon-lg icon-home"></i>
+                Homepage
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../links">
+                <i class="icon icon-lg icon-link"></i>
+                Links
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lrscy" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode Solution Summary</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LeetCode Solution Summary</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-27T15:05:53.000Z" itemprop="datePublished" class="page-time">
+  2019-01-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/LeetCode/">LeetCode</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Acceleration"><span class="post-toc-number">1.</span> <span class="post-toc-text">Basic Acceleration</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Algorithms"><span class="post-toc-number">2.</span> <span class="post-toc-text">Algorithms</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-LeetCode" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode Solution Summary</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-27 10:05:53" datetime="2019-01-27T15:05:53.000Z" itemprop="datePublished">2019-01-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/LeetCode/">LeetCode</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>This blog is a summary of my solution of LeetCode problems. I will share several interesting problems in this blog and category. Most of my solutions are on my <a href="https://github.com/lrscy/LeetCode" target="_blank" rel="noopener">Github</a>.</p>
+<p>Most of my algorithm problem solutions are written in C++ and some of them are written in Python3. Most of my databse problem solutions are written in MySQL.</p>
+<h1 id="Basic-Acceleration"><a href="#Basic-Acceleration" class="headerlink" title="Basic Acceleration"></a>Basic Acceleration</h1><p>Here is a way to reduce runtime when judging online with C++. Here is the code:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> desyncio = []() &#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio( <span class="literal">false</span> );</span><br><span class="line">    <span class="built_in">cin</span> .tie( <span class="literal">nullptr</span> );</span><br><span class="line">    <span class="built_in">cout</span>.tie( <span class="literal">nullptr</span> );</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>This code will close the synchronize of two kinds of input and output in C format and C++ format. In C, mostly, we use “scanf”, “printf”, and other similar functions to control the input and output of our program, while in C++, we use “cin”, “cout”, and other funcitons respectively. Since in some case, we would use both of them in our program and they won’t work as what we want without being controlled, C++ use synchronize to manage them. However, this rule will significantly slow down our program, especially when inputing and outputing large scale of data only in C or C++ format. Thus, we can close the synchronize by using codes upward.</p>
+<h1 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h1><p>When solving problems on LeetCode, I found some problems are really interesting, some solutions are so amazing, and some methods are valuable to learn and remember. I will post individual blogs for them and here is the index of them.</p>
+<ul>
+<li><a href="/2019/01/27/LeetCode-146-LRU-Cache">146 LRU Cache</a></li>
+<li><a href="/2019/01/27/LeetCode-159-Longest-Substring-with-At-Most-Two-Distinct-Characters">159 Longest Substring with At Most Two Distinct Characters</a></li>
+</ul>
+<p>To be uploaded:</p>
+<ul>
+<li>200 Number of Islands</li>
+<li>843 Guess the word</li>
+<li>982 Triples with Bitwise AND Equal To Zero</li>
+<li>984 String without AAA and BBB</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-01-27T17:14:39.450Z" itemprop="dateUpdated">2019-01-27 12:14:39</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://lrscy.github.io">
+            <img src="../../../../img/avatar.jpg" alt="Meow">
+            Meow
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Summary/">Summary</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2019/01/27/LeetCode/&title=《LeetCode Solution Summary》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2019/01/27/LeetCode/&title=《LeetCode Solution Summary》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2019/01/27/LeetCode/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode Solution Summary》 — Meow&url=https://lrscy.github.io/2019/01/27/LeetCode/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2019/01/27/LeetCode/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="../LeetCode-146-LRU-Cache/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">LeetCode 146 LRU Cache</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../../../../2018/10/22/DeepLearningNotes-NNandDL/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">DeepLearning.ai Note - Neural Network and Deep Learning</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'true' == 'true',
+            appId: "flgn5yN4nyhhyKPBimaT89Q8-gzGzoHsz",
+            appKey: "4yw3zmlMB7KjyFIzwIlYUnKz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        UV：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        PV：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Meow &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2019/01/27/LeetCode/&title=《LeetCode Solution Summary》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2019/01/27/LeetCode/&title=《LeetCode Solution Summary》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2019/01/27/LeetCode/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode Solution Summary》 — Meow&url=https://lrscy.github.io/2019/01/27/LeetCode/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2019/01/27/LeetCode/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aS27DMAwFwNz/0ukB2jiPpFzA0ngVNKnN8YIQP69XfL2D69Pvk3v+/vvrjgsDA+OxjCS466AnT7m+f/7iMDAwTmB8enD+OU+1Seh5bBgYGBjJb5JQ8jSNgYGBsYqRHygn/4WBgYExufV1wdk7Yv5TLY6BgfFAxuS4dvfnW+YbGBgYj2K8i1d+4FuVyqOoMDAwtmbkCS5fjKiGOB8qYGBgnMC4/joPJV/OqI4QRodFDAyMjRjzFYo86F7zLhqLYmBgbMdY1bLvFbfVdbGPKRgDA+MARjVR9pplScLN0/eXriEGBsZ2jN40cNXBMZ9IRoUrBgbGAYyk3d8relel3T8+Y2BgbM2YJNnq6tikVRexMTAwDmCsmgb2gs5TfDTZwMDA2JSRDxd7jbYc01y2wMDA2JTRKzJ7qbY3VIiWNjAwMLZmVFe1JgPOXnFbuDAwMA5j5IVl9f6TUcSXGDAwMI5k5KVs9UVMlsaidhsGBsamjCSlVgeZ80FCedkCAwNja0b5KNY6FOaJu9zaw8DAOIAxH3PmsGqiLw8yMTAwNmK8i1c1rOoKbD5maG7gYmBgPJCxdj44aZ9Vk3Jz/ImBgfFYRpJke2sT88XWQvsPAwPjAMak4Kw2/edlcKHdhoGBcSSjGkpeDFeTeGF2ioGBcTCjulqRvJQmEgMD4wBGdbW019CvpuPCa8LAwNiaMVmS6D3gjqEmBgbGpowfSFvbGaOKCMUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Where are you!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)Hi! Welcome Back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

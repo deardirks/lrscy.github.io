@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    
+    
+    
+    <title>LeetCode 843 Guess the Word | Meow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode,Solution">
+    <meta name="description" content="CodeThe solution of problem 843 is showed below. You can also find it here. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960/** * // This">
+<meta name="keywords" content="LeetCode,Solution">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 843 Guess the Word">
+<meta property="og:url" content="https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/index.html">
+<meta property="og:site_name" content="Meow">
+<meta property="og:description" content="CodeThe solution of problem 843 is showed below. You can also find it here. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960/** * // This">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-27T19:47:44.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 843 Guess the Word">
+<meta name="twitter:description" content="CodeThe solution of problem 843 is showed below. You can also find it here. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960/** * // This">
+    
+        <link rel="alternate" type="application/atom+xml" title="Meow" href="../../../../atom.xml">
+    
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
+      <div class="brand">
+        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
+          <img src="../../../../img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Meow</h5>
+          <a href="mailto:ruosenlee@gmail.com" title="ruosenlee@gmail.com" class="mail">ruosenlee@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../index.html">
+                <i class="icon icon-lg icon-home"></i>
+                Homepage
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="../../../../links">
+                <i class="icon icon-lg icon-link"></i>
+                Links
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lrscy" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode 843 Guess the Word</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LeetCode 843 Guess the Word</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-27T18:54:15.000Z" itemprop="datePublished" class="page-time">
+  2019-01-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/LeetCode/">LeetCode</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Code"><span class="post-toc-number">1.</span> <span class="post-toc-text">Code</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-number">2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Interesting-Point"><span class="post-toc-number">3.</span> <span class="post-toc-text">Interesting Point</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-LeetCode-843-Guess-the-Word" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode 843 Guess the Word</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-27 13:54:15" datetime="2019-01-27T18:54:15.000Z" itemprop="datePublished">2019-01-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/LeetCode/">LeetCode</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>The solution of <a href="https://leetcode.com/problems/guess-the-word/" target="_blank" rel="noopener">problem 843</a> is showed below. You can also find it <a href="https://github.com/lrscy/LeetCode/blob/master/Algorithm/843-Guess%20the%20Word.cpp" target="_blank" rel="noopener">here</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * // This is the Master&apos;s API interface.</span><br><span class="line"> * // You should not implement it, or speculate about its implementation</span><br><span class="line"> * class Master &#123;</span><br><span class="line"> *   public:</span><br><span class="line"> *     int guess(string word);</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">auto desyncio = []()</span><br><span class="line">&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);</span><br><span class="line">    cin.tie(nullptr);</span><br><span class="line">    return nullptr;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void findSecretWord(vector&lt;string&gt;&amp; wordlist, Master&amp; master) &#123;</span><br><span class="line">        long long prob[10][30] = &#123; 0 &#125;;</span><br><span class="line">        for( auto &amp;w : wordlist ) &#123;</span><br><span class="line">            for( int i = 0; i &lt; 6; ++i ) prob[i][w[i] - &apos;a&apos;] += 1;</span><br><span class="line">        &#125;</span><br><span class="line">        while( true ) &#123;</span><br><span class="line">            string tmp = generate( prob, wordlist );</span><br><span class="line">            int ret = master.guess( tmp );</span><br><span class="line">            if( ret == tmp.length() ) break;</span><br><span class="line">            for( auto it = wordlist.begin(); it != wordlist.end(); ) &#123;</span><br><span class="line">                if( match( *it, tmp ) != ret ) &#123;</span><br><span class="line">                    for( int i = 0; i &lt; 6; ++i )</span><br><span class="line">                        prob[i][( *it )[i] - &apos;a&apos;] -= 1;</span><br><span class="line">                    wordlist.erase( it );</span><br><span class="line">                &#125; else ++it;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string generate( long long prob[][30], vector&lt;string&gt;&amp; wordlist ) &#123;</span><br><span class="line">        string ret;</span><br><span class="line">        long long best = 0;</span><br><span class="line">        for( auto w : wordlist ) &#123;</span><br><span class="line">            long long tpscore = 1;</span><br><span class="line">            for( int i = 0; i &lt; 6; ++i ) tpscore *= prob[i][w[i] - &apos;a&apos;];</span><br><span class="line">            if( tpscore &gt; best ) &#123;</span><br><span class="line">                best = tpscore;</span><br><span class="line">                ret = w;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int match( string a, string b ) &#123;</span><br><span class="line">        int ret = 0;</span><br><span class="line">        for( int i = 0; i &lt; a.length(); ++i ) &#123;</span><br><span class="line">            if( a[i] == b[i] ) ++ret;</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>The thought of the problem is from a <a href="https://leetcode.com/problems/guess-the-word/discuss/134087/C%2B%2B-elimination-histogram-beats-Minimax" target="_blank" rel="noopener">discussion</a> of the problem. Basically, we count all characters on each position from 1 to 6 as there probability. Then we generate a string with highest probability and guess it. Based on what return to us, we eliminate all other candidates which does not meet the requirement. Finally, we will guess the right word.</p>
+<h1 id="Interesting-Point"><a href="#Interesting-Point" class="headerlink" title="Interesting Point"></a>Interesting Point</h1><p>It’s a whole new kind of problem. The method to solve it is now fixed. Statistic is a candidate method to this problem. This kind of problem is just so fun and interesting!</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-01-27T19:47:44.259Z" itemprop="dateUpdated">2019-01-27 14:47:44</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://lrscy.github.io">
+            <img src="../../../../img/avatar.jpg" alt="Meow">
+            Meow
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Solution/">Solution</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/&title=《LeetCode 843 Guess the Word》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/&title=《LeetCode 843 Guess the Word》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode 843 Guess the Word》 — Meow&url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="../LeetCode-982-Triples-with-Bitwise-AND-Equal-To-Zero/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">LeetCode 982 Triples with Bitwise AND Equal To Zero</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="../LeetCode-200-Number-of-Islands/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">LeetCode 200 Number of Islands</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'true' == 'true',
+            appId: "flgn5yN4nyhhyKPBimaT89Q8-gzGzoHsz",
+            appKey: "4yw3zmlMB7KjyFIzwIlYUnKz",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        UV：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        PV：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Meow &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/&title=《LeetCode 843 Guess the Word》 — Meow&pic=https://lrscy.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/&title=《LeetCode 843 Guess the Word》 — Meow&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode 843 Guess the Word》 — Meow&url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/&via=https://lrscy.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://lrscy.github.io/2019/01/27/LeetCode-843-Guess-the-Word/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3a0W7jMAwEwPz/T+eAPl1xibskRTc4jJ+CwLE1KiCxSz0e8fX8unrf/3vP86/r3f3X9xy+8PDw8FpDf3ddD6h3//Xbk2lKxoyHh4e3zUsW9wQz2Z2SKShvVHh4eHi/ystL5Oqin5TyeHh4eP8Hr1cK9+IPPDw8vE/jJUVzL6jNN4B8DCtZCx4eHl7Mqy7Tn/B5sb+Hh4eHN1iOe62pZCjJot8b4bcn4+Hh4S3weoeckgI6mZrr50+K8kdS3ePh4eG1ePlAkyMFebBbZSRvfHE/Hh4e3gKv+oPq99XG1eQtP2wPeHh4eId4+Q8mqWlvOibBLh4eHt42LymLq4FF/qtTpXb59Xh4eHgt3qlYdn4EYdI8++HJeHh4eGu8aimcL/pnz4XlzTA8PDy8e3jVBv81KS+L86dV22N4eHh4Z3m9iLYare5FHuWUGg8PD2/MyzPParhwajM4EEbg4eHhLfB6S/xkge4Ftc0R4uHh4R3lTVr4G+Vvtc1W+I8BDw8P7yiv2gCbhLPV1lp1yl5sDHh4eHgLvGr82osP5tFGeQPDw8PDu503iXeTKZgcTYjei4eHh7fGy4vjavs/eVpvK4omEQ8PD2+BNwlte8enJgcL8kl8TP5KeHh4eEVeXsI+g2u+VSR3RuEyHh4e3iHeRkNrcoAgRxZiXDw8PLw1Xl5e94rsyUGBPJ749g0eHh7eAu9sQLB3FCDPGd4i8fDw8A7xnsUrD217zaqbwgg8PDy8QzFudfGdbA/V7Sf5jIeHh3cnb7IZ9I4j9I4dNKNePDw8vDVeHiXky3Q10s0PLhzb0/Dw8PCWeUkhmzfPosbVeOR4eHh4n8ObxLLVwLf6BDw8PLx7eL1DVL1mf34o4Xo80TaDh4eHt8DrFa/565Nwtldwj3p6eHh4eB3eH5UgfYIy+dIIAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Where are you!';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)Hi! Welcome Back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
